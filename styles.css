@@ -16,17 +16,19 @@ a li ul{
 }
 #landing-page{
     width: 100%;
-    height: 100vh;
+    height: 800px;
     background-color: #11110F;
-    padding:1rem 4rem;
+    padding:1rem 5rem;
+    overflow-x: hidden;
 
 }
 .container-nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 /* .container-logo {
-
+    
 } */
 .container-navbar ul {
  display: flex;
@@ -49,22 +51,173 @@ a li ul{
 .container-navbar ul li a:hover {
     color: gray;
 }
-
-.container-landing {
-    width: 30%;
-    height: 60vh;
-    margin: 3rem 0px;
-    border:0.5rem solid #5AA341;
-    border-radius: 10rem 0rem 10rem 0rem;
+.landing-pageinfo{
     display: flex;
-    color: white;   
-    padding: 12px;  
+    justify-content: space-between;
+    gap: 7rem;
+    color: rgb(194, 195, 196);
+    /* flex-wrap: wrap; */
 }
-.container-img{
-    width: 100%;
-    text-align: center;
+/* .box-info {
    
+} */
+.box-info {
+  width: 40%;
+  /* background-color: #1A9718; */
+  border-radius: 7rem 0px 7rem 0px;
+  padding: 12px 3rem;
+  margin: 2rem 0px 3px 3px;
+  border: 4px solid #1A9718;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
 }
-.container-img img {
-    width: 30%;
+.photo-developer > img{
+    width: 40%
+    
 }
+.photo-developer-info {
+    display: flex;
+    align-items: center;
+ 
+}
+.photo-developer-info  i {
+    width: 32px;
+}
+.photo-developer-info  p{
+    padding: 0rem 12px;
+}
+.container-language {
+    display: flex;
+    /* gap: px; */
+}
+.languages {
+ background-color: #1A9718;
+ padding: 4px 8px;
+ border-radius: 40px;
+ margin: 12px 3px;
+}
+.download-button {
+  width: 70%;
+  background-color: #D9D9D9;
+  padding: 8px 12px;
+  margin: 0 auto;
+  color: black;
+  border-radius: 40px;
+  margin: 12px auto     ;
+  cursor: pointer;
+  
+}
+.download-button i {
+    color: black;
+}
+.who-am-i-text{
+    margin: 0px 1.5rem;
+   font-size: 2rem;
+   font-weight: bold;
+}
+.text {
+    color: #189780;
+    font-size: 80px;
+    font-weight: bold;
+}
+.iam {
+   color: #5BC27E; 
+}
+.yvan {
+ color: #0C3583;
+}
+.heading-text {
+ width: 60%;
+}
+.heading-text p{
+    margin: 0px 1.5rem;
+}
+.boxinfo-part-two{
+   display: flex; 
+}
+.box-info-parttwo{
+    margin: 3rem 0px;
+  
+}
+.container-items{
+    width: 70px;
+    cursor: pointer;
+    background-color: #3C3535;
+    border: 3px solid #189780;
+    color: white;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0px;
+    border-radius: 20px;
+}
+.container-items p{
+  padding: 2rem 0px;
+}
+#about-me {
+    width: 100%;
+    height: 800px;
+    background: linear-gradient(to bottom, #1C1B1B, #189780);
+    color: white;
+    padding:1rem 5rem;
+}
+.main-container {
+    padding: 20px 0px;
+}
+.logo-code {
+    display: flex;
+    justify-content: center;
+}
+.about-me-title {
+ 
+}
+.logo-code img{
+    width: 50%;
+}
+
+@media screen and (max-width: 920px) {
+    .container-navbar {
+       display: none;
+    }
+    .text{
+        font-size: 43px;
+        text-align: center;
+    }
+    #landing-page{
+        padding: 20px 1rem;
+    }
+    .landing-pageinfo {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .box-info {
+        padding: 0 10rem;
+    }
+    .heading-text {
+      width: 100%;
+    }
+    .landing-pageinfo{
+     gap: 3rem;
+    }
+    .box-info-parttwo{
+        margin: 3rem 0px;
+    }
+    #landing-page{
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1226px) {
+.text {
+    font-size: 53px;
+}
+.box-info-parttwo{
+    margin: 4rem 0px;
+}
+}
+
+
