@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    body {
+        font-family: 'Poppins', sans-serif;
+      }
+}
+a li ul{
+    text-decoration: none;
+    list-style: none;
+}
+:root {
+    --color-green:#1A9718;
+}
+
+
+#login {
+    width: 100%;
+    height: 100vh   ;
+    background-color: #345533;
+}
+
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login-container  h1 {
+ padding: 2rem 0px;
+ color: #fff;
+}
+
+.middle-main {
+    width: 35%;
+    height: 36%;
+    background-color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 20px;
+}
+.input-name {
+    display: flex;
+    flex-direction: column;
+    padding: 3px 0px;
+}
+.input-name label {
+    font-size: 17px;
+    font-weight: bold;
+}
+.input-name input {
+    padding: 8px 8px;
+    font-family: poppins;
+    border: 2px solid #092458;
+    border-radius: 8px;
+    margin: 0.8rem 0px;
+    outline: none    ;
+
+}
+.signup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.8rem 0px;
+}
+.signup p a{
+    background-color: #4A63E7;
+    padding:6px 12px;
+    border-radius: 16px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.signup .login {
+    color: #4A63E7;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+.login a {
+    text-decoration: none;
+    color: #4A63E7;
+}
+.signup .login:hover {
+    border-bottom: 1px solid #1A9718;
+}
+@media screen and (max-width: 920px) {
+    .middle-main {
+        width: 90%;
+        height: 30%;
+        background-color: #fff;
+        padding:3px 1rem;
+    } 
+    
+}
