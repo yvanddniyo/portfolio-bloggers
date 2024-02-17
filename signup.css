@@ -37,7 +37,7 @@ a li ul{
 
 .middle-main {
     width: 35%;
-    height: 58%;
+    height: 70%;
     background-color: #fff;
     padding: 1rem 3rem;
     border-radius: 20px;
@@ -86,11 +86,28 @@ a li ul{
 .signup .login:hover {
     border-bottom: 1px solid #1A9718;
 }
+.goBack {
+    margin: 1rem 0px;
+}
+.goBack a {
+    color: #030303;
+    font-family: 800;
+    transition: all 1s ease;
+    text-decoration: none;
+}
+.goBack a:hover {
+   text-decoration: underline;
+   color: #da19e0;
+}
+
 @media screen and (max-width: 920px) {
     .middle-main {
         width: 90%;
-        height: 55%;
+        height: 68%;
         background-color: #fff;
-        padding: 0rem 1rem;
+        padding: 0.5rem 1rem;
     } 
 }
+
+
+   

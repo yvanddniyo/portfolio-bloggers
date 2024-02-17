@@ -37,7 +37,7 @@ a li ul{
 
 .middle-main {
     width: 35%;
-    height: 36%;
+    height: 45%;
     background-color: #fff;
     padding: 1rem 3rem;
     border-radius: 20px;
@@ -46,6 +46,9 @@ a li ul{
     display: flex;
     flex-direction: column;
     padding: 3px 0px;
+}
+.input-name label {
+    margin-top: 3px;
 }
 .input-name label {
     font-size: 17px;
@@ -80,6 +83,17 @@ a li ul{
     cursor: pointer;
     text-decoration: none;
 }
+.goBack-login a {
+    margin: 0.6rem 0px;
+    color: #030303;
+    font-family: 800;
+    transition: all 1s ease;
+    text-decoration: none;
+}
+.goBack-login a:hover {
+   text-decoration: underline;
+   color: #da19e0;
+}
 .login a {
     text-decoration: none;
     color: #4A63E7;
@@ -90,9 +104,9 @@ a li ul{
 @media screen and (max-width: 920px) {
     .middle-main {
         width: 90%;
-        height: 30%;
+        height: 42%;
         background-color: #fff;
-        padding:3px 1rem;
+        padding:3px 1.9rem;
     } 
     
 }

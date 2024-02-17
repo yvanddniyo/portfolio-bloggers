@@ -16,23 +16,24 @@ a li ul{
 }
 #landing-page{
     width: 100%;
-    height: 800px;
+    height: 100%;
     background-color: #11110F;
     padding:1rem 5rem;
     overflow-x: hidden;
+    /* padding: ; */
 
 }
 .container-nav {
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
+    /* margin: 0px -12rem 0px 0px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #11110F;
     border-radius: 12px;
-    margin: 0 -14px;
+    margin: 0px -14px;
     z-index: 100;
-   
 }
 .container-logo{
     margin: 0px 2.5rem;
@@ -85,7 +86,7 @@ a li ul{
     justify-content: space-between;
     gap: 7rem;
     color: rgb(194, 195, 196);
-    margin: 6rem 0px 0px 0px;
+    margin: 3rem  0px;
 }
 /* .box-info {
    
@@ -482,8 +483,6 @@ a li ul{
     display: flex;
     justify-content: space-between;
 }
-
-
 .main-content-blog p {
     width: 70%;
     color: #ffffff;
@@ -499,9 +498,14 @@ a li ul{
     flex-wrap: wrap;
     
 }
+.more-info a {
+    text-decoration: none;
+    color: #18e614;
+}
 .more-info  span {
     font-size:23px;
     padding: 0px 23px;
+    color: white;
 }
 .more-info p{
     padding: 8px 0px;
@@ -517,11 +521,11 @@ a li ul{
     margin: 1rem 0px;
 }
 .web-dev {
-    width: 20p;
+    /* width: 20p; */
     text-align: center;
     background-color: #202020;
     border-radius: 100px;
-    padding: 4px;
+    padding: 4px 1rem;
 } 
 .blogs-button {
    display: flex;
@@ -529,6 +533,10 @@ a li ul{
    gap: 2rem;
    flex-wrap: wrap;
    margin: 2rem 0px; 
+}
+.blogs-button p a {
+text-decoration: none;
+list-style: none;
 }
 .blogs-button .view-more {
     padding: 16px;
@@ -655,8 +663,8 @@ a li ul{
  }
  #footer {
     width: 100%;
-    margin: 4rem 0px 0px 0px;
-    padding: 0px 0px 2.5rem 0px;
+    margin: 0rem 0px 0px 0px;
+    padding: 2.5rem 0px 2.5rem 0px;
  }
  .container-footer {
    display: flex;
@@ -700,6 +708,7 @@ a li ul{
         background-color: #11110F;
         width: 100%;
         height: 100vh;
+        padding: 12px 0px;
         /* text-align: center; */
         transition: 0.3s;
     }
@@ -744,6 +753,18 @@ a li ul{
     }
     .photo-container-blog {
         display: block;
+    }
+    .container-nav {
+        width: 100%;
+        position: fixed;
+        /* margin: -12px -12rem 0px 0px; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #11110F;
+        border-radius: 12px;
+        margin: 0 -14px;
+        z-index: 100;
     }
     #blogs {
     width: 100%;
@@ -852,6 +873,13 @@ a li ul{
     #landing-page{
         height: 100%;
     }
+    /* .container-articles {
+        padding: 1rem 1rem;
+        color: #d1d0d0;
+    } */
+    .container-articles{
+        padding: 0rem 0rem;
+    }
 }
 
 @media screen and (max-width: 1226px) {
@@ -877,7 +905,178 @@ a li ul{
 .box-info-parttwo{
     margin: 4rem 0px;
 }
-
+.container-articles {
+    margin: 4rem 2rem 2rem  2rem;
+}
 }
 
+.container-blog-title {
+    /* width: 100%; */
+    margin: 2rem 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #ffffff;
+}
+.container-blog-title h1{
+    color: #1eb1b6;
+    font-size: 38px;
+    margin-bottom: 1rem;
+}
+.container-blog-title h2{
+    margin: 2rem 0px;
+    border: 2px solid #1eb1b6;
+    padding: 8px 16px;
+    border-radius: 30px;
+    color: #1A9718;
+    font-size: 28px;
+    cursor: pointer;
+}
 
+/* article style */
+
+.container-articles {
+    padding: 4rem 20rem 2rem  20rem;
+    color: #d1d0d0;
+}
+
+.container-article-title {
+    text-align: center;
+    color: #1eb1b6;
+    margin-bottom: 4rem;
+}
+
+.info-article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 12px;
+}
+.line-article {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    margin: 0.5rem 0px;
+}
+.line-article-bottom {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    margin: 0.5rem 0px;
+}
+
+.img-article {
+    margin-top: 3rem;
+    text-align: center;
+}
+.img-article  img{
+    /* height: 19rem; */
+    width: 100%;
+    object-fit: cover;
+}
+.text-container p {
+    padding: 1rem 0px;
+}
+.text-container p a {
+    color: #1A9718;
+}
+.text-container h1 {
+    color: #1eb1b6;
+    font-size: 17px;
+    padding: 0rem 0px;
+}
+.references {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-wrap: wrap;
+    gap: 1rem;
+    
+}
+.references p{
+  background-color: gray;
+  padding: 4px 1rem;
+  border-radius: 12px;
+}
+.you-might-like {
+   margin: 3rem 0px;
+   text-align: center;
+}
+.you-might-like h1 {
+    color: #1eb1b6;
+    font-size: 32px;
+}
+
+.photo-container-article {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 2rem 0px;
+    /* flex-direction: column; */
+}
+.photo-article{
+    width: 100%;
+    display: flex;
+}
+.photo-article img {
+  width: 50%;
+  object-fit: cover;
+}
+.main-content-article{
+  width: 100%;
+  display: flex;
+  /* justify-content: flex-start; */
+  flex-direction: column;
+  margin-left: -6rem;
+}
+.main-content-article h1 {
+    font-size: 15px;
+    /* margin-left: -1.3rem; */
+    float: right;
+}
+.main-content-article p {
+    text-align: left    ;
+    font-size: 13px;
+}
+.more-info-article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0px;
+}
+.info-articles {
+    display: flex;
+    flex-wrap: wrap;
+}
+ .info-articles p {
+    padding: 4px 6px;
+ }
+
+ @media screen and (max-width: 1080px) {
+    .container-articles {
+      padding: 4rem 1rem 2rem 1rem; 
+    }
+    .photo-container-article {
+        display: block;
+    }
+    .main-content-article p {
+        font-size: 13px;
+        margin: 0rem 5rem;
+    }
+    .main-content-article h1 {
+        font-size: 15px;
+        padding: 1rem 1.8rem;
+        text-align: right;
+    }
+    .photo-article img {
+        width: 100%;
+        object-fit: cover;
+      }
+  }
+ @media screen and (max-width: 1300px) {
+    .container-articles {
+      padding: 4rem 5rem 2rem 5rem; /* Further adjusted padding for smaller screens */
+    }
+  }
