@@ -5,9 +5,31 @@
     hamburger.classList.toggle('active')
     navbars.classList.toggle('active')
  })
- document.querySelector('.container-navbar-lists li').forEach(n => 
-    n.addEventListener('click', () => {
-    hamburger.classList.remove('active')
-    navbars.classList.remove('active')
-    }))
+ document.querySelectorAll('.container-navbar-lists li').forEach(n => {
+   n.addEventListener('click', () => {
+       hamburger.classList.remove('active');
+       navbars.classList.remove('active');
+   });
+});
+
+
+    const scrollContainer = document.querySelector(".my-project");
+    const backBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+   //  scrollContainer.addEventListener('wheel', (e) => {
+   //      e.preventDefault();
+   //      scrollContainer.scrollLeft += e.deltaY;
+   //  });
+    
+    backBtn.addEventListener('click', () => {
+       scrollContainer.style.scrollBehavior ="smooth"
+        scrollContainer.scrollLeft += 500;
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      scrollContainer.style.scrollBehavior ="smooth"
+        scrollContainer.scrollLeft -=500;
+    });
+   
  
