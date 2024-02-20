@@ -17,10 +17,7 @@
     const backBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     
-   //  scrollContainer.addEventListener('wheel', (e) => {
-   //      e.preventDefault();
-   //      scrollContainer.scrollLeft += e.deltaY;
-   //  });
+   
     
     backBtn.addEventListener('click', () => {
        scrollContainer.style.scrollBehavior ="smooth"
