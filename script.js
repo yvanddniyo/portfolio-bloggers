@@ -29,4 +29,40 @@
         scrollContainer.scrollLeft -=500;
     });
    
+// adding the script for checking validation
+
+const nameInput = document.getElementById('name');
+const nameError = document.getElementById('name-error');
+const emailInput = document.getElementById('email');
+const emailError = document.getElementById('email-error');
+const messageInput = document.getElementById('message');
+const messageError = document.getElementById('message-error');
+const submit = document.getElementById('send').value;
+const form  = document.getElementById('form')
+
+form.addEventListener('submit', (e)=> {
+  if (nameInput.value === '' || nameInput === null) {
+    nameError.innerText = "please your name required"
+    e.preventDefault();
+  }
+  else {
+    nameError.innerText =""
+  }
+  
+  if (emailInput.value === '' || emailInput === null) {
+    emailError.innerText = "please your email required"
+    e.preventDefault();
+  }
+  else {
+    emailError.innerText = ""
+  }
+  if (messageInput.value === '' || messageInput === null) {
+    messageError.innerText = "please your message required"
+    e.preventDefault();
+  }
+  else {
+    messageError.innerText =""
+  }
+})
+
  

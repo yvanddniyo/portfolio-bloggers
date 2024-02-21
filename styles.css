@@ -454,12 +454,14 @@ a li ul{
     color: #18e614;
     text-decoration: none;
  }
+ 
  .my-project div span {
     position: relative;
     width: 100%;
     cursor: pointer;
     display: block; 
-    transition: all 0.9s ease-in; 
+    overflow: hidden;
+    transition: all 0.9s ease-out; 
 }
 .my-project div span a {
     position: absolute;
@@ -599,6 +601,9 @@ a li ul{
  color: white;
  padding: 0px 5rem;
 }
+.container-contact {
+    padding: 0px 15rem;
+}
 .line-skills-contact {
     width: 16px;
     height: 16px;
@@ -643,12 +648,19 @@ a li ul{
     margin: 3rem 0px;
 
  }
+ .errors {
+    margin-top: -14px;
+    color: rgb(241, 10, 10);
+ }
  .nameInput {
     width: 100%;
     display: flex;
     flex-direction: column;
     color: #ffffff;
+    font-family: poppins;
+    margin-top: 1rem;
  }
+
  .nameInput input {
     width: 90%;
     font-family: poppins;
@@ -665,7 +677,7 @@ a li ul{
     flex-direction: column;
     color: #ffffff;
  }
- .nameInput-message input {
+ .nameInput-message textarea{
     width: 95%;
     font-family: poppins;
     margin: 1rem 0px;
@@ -686,16 +698,20 @@ a li ul{
     justify-content: center;
     margin: 1rem 0px;
 }
-.title-main-send p{
-    color: rgb(48, 24, 24);
-    background-color: #1A9718;
-     padding: 8px 1rem;
-     border-radius:10px  ;
-     font-size: 32px;
-    cursor: pointer ;
+.title-main-send button{
+    border: none;
+    background-color: #398638;
+    color: #fff;
+    padding: 12px 1rem;
+    font-family: poppins;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+
  }
- .title-main-send p i {
+ .title-main-send button i {
     padding: 0px 5px;
+    font-size: 14px;
  }
  #footer {
     width: 100%;
@@ -720,6 +736,9 @@ a li ul{
  }
 
 @media screen and (max-width: 993px) {
+    .container-contact {
+        padding: 0px 20px;
+    }
    .menus {
         display: block;
     }

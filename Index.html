@@ -359,7 +359,7 @@
     </div>
   </section>
   <section id="contact">
-    <div class="container-contact">
+    <form id="form" class="container-contact">
         <div class="logo-code">
             <img src="./assets/intro.png" alt="intro">
         </div>
@@ -381,21 +381,26 @@
         <div class="container-info-mail">
             <div class="nameInput">
                 <label for="">Your name*</label>
-                <input type="text" placeholder="Your Full name">
+                <input id="name" type="text" placeholder="Your Full name">
+                <span id="name-error" class="errors"></span>
             </div>
             <div class="nameInput">
                 <label for="">Your Email*</label>
-                <input type="text" placeholder="Your Email">
+                <input id="email" type="email" placeholder="Your Email">
+                <span id="email-error" class="errors"></span>
+
             </div>
         </div>
         <div class="nameInput-message">
             <label for="">Your message*</label>
-            <input type="text" placeholder="Your message ">
+            <textarea id="message" type="text" placeholder="Your message "></textarea>
+            <span id="message-error" class="errors"></span>
+
         </div>
         <div class="title-main-send">
-            <p>Send <i class="fa-solid fa-paper-plane"></i></p>
+            <button id="send" type="submit">Send <i class="fa-solid fa-paper-plane"></i></button>
         </div>
-    </div>
+    </form>
     <section id="footer">
         <div class="line-btn"></div>
     <div class="container-footer">
