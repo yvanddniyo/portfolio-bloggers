@@ -489,6 +489,8 @@ a li ul{
     display: flex;
     justify-content: center;
     padding: 3rem 0px;
+    text-align: center;
+    font-size: 14px;
 }
 .text-project p{
     width: 60%;
@@ -670,6 +672,8 @@ a li ul{
     border-bottom: 2px solid  #66C02E;
     color: #ffffff;
     outline: none;
+    padding-left: 8px;
+    background-color: none;
  }
  .nameInput-message {
     width: 100%;
@@ -685,6 +689,7 @@ a li ul{
     border: none;
     border-bottom: 2px solid  #66C02E;
     color: #ffffff;
+    padding-left: 8px;
     outline: none;
  }
  .nameInput-message input::placeholder {
@@ -726,13 +731,13 @@ a li ul{
  .copyright{
    display: flex;
    gap: 12px;
-   font-size: 20px;
+   font-size: 14px;
    align-items: center;
 
  }
  .copyright a{
     color: #b4b9b7;
-    font-size: 20px;
+    font-size: 13px;
  }
 
 @media screen and (max-width: 993px) {

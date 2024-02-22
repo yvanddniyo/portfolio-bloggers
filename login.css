@@ -63,13 +63,21 @@ a li ul{
     outline: none    ;
 
 }
+.errors{
+    color: red;
+    font-size: 13px;
+}
 .signup {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin: 0.8rem 0px;
 }
-.signup p a{
+.signup button {
+ border: none;
+ font-family: poppins;
+}
+.signup button {
     background-color: #4A63E7;
     padding:6px 12px;
     border-radius: 16px;

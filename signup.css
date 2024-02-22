@@ -34,10 +34,13 @@ a li ul{
  padding: 2rem 0px;
  color: #fff;
 }
-
+ .errors {
+    color: red;
+    font-size: 13px;
+ }
 .middle-main {
     width: 35%;
-    height: 70%;
+    /* height: 100%; */
     background-color: #fff;
     padding: 1rem 3rem;
     border-radius: 20px;
@@ -65,13 +68,18 @@ a li ul{
     margin: 0.8rem 0px;
 
 }
-.signup p a{
+.signup button {
+    border: none;
+}
+.signup button {
     background-color: #4A63E7;
-    padding:6px 12px;
+    padding:6px 1rem;
     border-radius: 16px;
     color: #fff;
     cursor: pointer;
     text-decoration: none;
+    border: none;
+    font-family: poppins;
 }
 .signup .login a{
     color: #4A63E7;
@@ -103,7 +111,7 @@ a li ul{
 @media screen and (max-width: 920px) {
     .middle-main {
         width: 90%;
-        height: 68%;
+        height: 50%;
         background-color: #fff;
         padding: 0.5rem 1rem;
     } 

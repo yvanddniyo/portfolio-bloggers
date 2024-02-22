@@ -37,7 +37,7 @@ const emailInput = document.getElementById('email');
 const emailError = document.getElementById('email-error');
 const messageInput = document.getElementById('message');
 const messageError = document.getElementById('message-error');
-const submit = document.getElementById('send').value;
+const submit = document.getElementById('send');
 const form  = document.getElementById('form')
 
 form.addEventListener('submit', (e)=> {
@@ -58,6 +58,10 @@ form.addEventListener('submit', (e)=> {
   }
   if (messageInput.value === '' || messageInput === null) {
     messageError.innerText = "please your message required"
+    e.preventDefault();
+  }
+  else if (messageInput.value.length <= 12) {
+    messageError.innerText = "must have at least 12 character to up"
     e.preventDefault();
   }
   else {
