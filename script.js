@@ -69,4 +69,21 @@ form.addEventListener('submit', (e)=> {
   }
 })
 
+// disable button of send without text
+const contentInput = document.getElementById('message'); 
+const buttonComment =  document.getElementById('send');
+
+
+const disableCommentButton = () => {
+   if (contentInput.value) {
+      buttonComment.style.disable = "false"
+      buttonComment.style.opacity = "1"
+   }
+   else {
+      buttonComment.style.disable = "true"
+      buttonComment.style.opacity = "0.4"
+   }
+}
+
+
  

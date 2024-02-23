@@ -15,16 +15,17 @@ form.addEventListener('submit', (e) => {
         emailInput.value =""
        }
     
-        if(passwordInput.value.length <=5) {
+        if(passwordInput.value.length <= 5) {
         passwordError.innerText = "password must be more that 5 characters"
         e.preventDefault()
        }
        else {
         passwordError.innerHTML = "";
        passwordInput.value =""
-    
        }
 })
+
+// SHOW OR HIDE PASSWORD
 
 const passwordField = document.getElementById('password');
  const showPass = document.getElementById('show-password');

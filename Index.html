@@ -19,16 +19,16 @@
                         <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="">About me</a>
+                        <a href="#about-me">About me</a>
                     </li>
                     <li>
-                        <a href="">Skills</a>
+                        <a href="#skills">Skills</a>
                     </li>
                     <li>
-                        <a href="">My project</a>
+                        <a href="#my-work">My project</a>
                     </li>
                     <li>
-                        <a href="./blogs.html">Blogs</a>
+                        <a href="#blogs">Blogs</a>
                     </li>
                     <li class="signup">
                         <a href="./signup.html">Sign Up</a>
@@ -170,7 +170,7 @@
         </div>
        </div>
     </section>
-  <section id="skills">
+  <section id="skills"> 
     <div class="container-skills">
         <div class="logo-code">
             <img src="./assets/intro.png" alt="intro">
@@ -196,8 +196,8 @@
             <div class="card-one">
                 <div class="min-card">
                  <i class="fa-solid fa-mobile"></i>
-                 <p>Web Developerment</p>
-                 <p class="langs">HMTL, CSS, JavaScript and React</p>
+                 <p>MOBILE APP DEVELOPEMNT</p>
+                 <p class="langs">React Native and IOS, Android</p>
                 </div>
              </div>
         </div>
@@ -393,14 +393,19 @@
         </div>
         <div class="nameInput-message">
             <label for="">Your message*</label>
-            <textarea id="message" type="text" placeholder="Your message "></textarea>
+            <textarea id="message" type="text" placeholder="Your message" onkeyup="disableCommentButton()"></textarea>
             <span id="message-error" class="errors"></span>
 
         </div>
         <div class="title-main-send">
-            <button id="send" type="submit">Send <i class="fa-solid fa-paper-plane"></i></button>
+            <button id="send" type="submit">Send 
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
         </div>
     </form>
+
+    <!-- FOOTER SECTION -->
+
     <section id="footer">
         <div class="line-btn"></div>
     <div class="container-footer">

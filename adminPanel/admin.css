@@ -19,6 +19,8 @@
   height: 60px;  
   background-color: #060F22;
   color: white;
+  position: fixed;
+  top: 0;
 }
 .intro {
     display: flex;
@@ -26,6 +28,8 @@
     align-items: center;
     padding: 1rem 30rem 0px 0rem;
     margin-left: 8rem;
+    position: fixed;
+    width: 100%;
 } 
 
 
@@ -53,7 +57,7 @@
     background-color: #060F22;
 }
 .main-menu{
- padding: 2rem 0px 1rem 0px;
+ padding: 4rem 0px 1rem 0px;
  cursor: pointer;
 }
 .container-menu{
@@ -117,6 +121,10 @@
     margin: 3rem 0px;
     border-radius: 12px;
     cursor: pointer;
+}
+.message p i {
+    color: #4A63E7;
+    font-size: 28px;
 }
 .message h3 span{
     font-size: 15px;
@@ -270,6 +278,11 @@
     width: 50%;
     height: 40%;
 }
+#word-needed {
+    font-size: 13px;
+    color: #EB3223;
+    padding: 0.6rem 0px ;
+}
 .photo-view img {
     width: 90%;
     border-radius: 18px;
@@ -315,9 +328,8 @@
   margin: 1rem 12px;
   padding: 1rem 12px;
 }
-
 .leave-a-comment textarea{
-  margin: 1rem 0px;
+  margin: 0.5rem 0px;
   padding: 0.5rem 14px;
   width: 90%;
   outline: #2ecc71;
@@ -334,6 +346,7 @@
     font-family: poppins;
      border-radius: 30px;
      cursor: pointer;
+     /* margin-top: 0.8rem; */
      margin-bottom: 2rem ;
 }
 .go {
@@ -563,7 +576,7 @@
     display: none;
 }
 .logo-container{
-    padding-right: 1rem;
+    padding-right: 6rem;
 }
 #admin {
     width: 100%;

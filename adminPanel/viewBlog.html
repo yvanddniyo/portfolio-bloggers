@@ -41,8 +41,10 @@
             </div>
             <div class="leave-a-comment">
                 <h4>Leave a comment</h4>
-                <textarea name="content" id="content" cols="30" rows="10"></textarea>
-                <button>Comment</button>
+                <textarea name="content" id="content" cols="30" rows="10"
+                placeholder="Leave us a comment" onkeyup="disableCommentButton()"></textarea><br>
+                <span id="word-needed"></span><br>
+                <button id="send" type="submit">Comment</button>
             </div>
             <button class="go">
                 <a href="./dashboard.html">
@@ -55,5 +57,30 @@
          </div>
       </div>
     </section>
+    <script>
+        
+        const messageInput = document.getElementById('content'); 
+        const buttonComment =  document.getElementById('send');
+        const wordNeeded =  document.getElementById('word-needed');
+
+        const disableCommentButton = () => {
+                if (messageInput.value.length >= 10) {
+                    buttonComment.style.disable = "false"
+                    buttonComment.style.opacity = "1"
+                }
+                else {
+                    buttonComment.style.disable = "true"
+                    buttonComment.style.opacity = "0.4"
+                }
+                if (messageInput.value.length <= 10) {
+                    wordNeeded.innerHTML ="you must type more than 10 characters"
+                }
+                else {
+                    wordNeeded.innerHTML = ""
+                    wordNeeded.value = ""
+
+                }
+    }
+    </script>
 </body>
 </html>

@@ -60,10 +60,31 @@ form.addEventListener('submit', (e) => {
   
 })
 
+
+
+
 const passwordField = document.getElementById('password');
- const confirmPasswords = document.getElementById('confirm-password');
- const showPass = document.getElementById('show-password');
-    
+const confirmPasswords = document.getElementById('confirm-password');
+const showPass = document.getElementById('show-password');
+
+// CHECKING IF PASSWORDS ARE SAME
+
+const checkSamePassword = () =>  {
+   if(passwordField.value != confirmPassword.value) {
+      document.getElementById('create-same-pass').style.color = 'red';
+      document.getElementById('create-same-pass').innerHTML = 'Please use same password!';
+      document.getElementById('send').style.disable = 'true';
+      document.getElementById('send').style.opacity = '0.4';
+   }
+   else {
+      document.getElementById('create-same-pass').style.color = 'green';
+      document.getElementById('create-same-pass').innerHTML = 'Relax, password are same';
+      document.getElementById('send').style.disable = 'false';
+      document.getElementById('send').style.opacity = '1'; 
+   }
+}
+
+// SHOWING PASSWORD OR HIDE IT
  showPass.addEventListener('click', ()=>{
     const type = passwordField.getAttribute('type') === "password"?
     'text' : 'password'

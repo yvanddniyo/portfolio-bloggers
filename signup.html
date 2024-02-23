@@ -32,9 +32,11 @@
             </div>
             <div class="input-name">
                 <label for="">Confirm password</label>
-                <input id="confirm-password" type="password">
+                <input id="confirm-password" type="password" onkeyup="checkSamePassword()">
                 <span id="confirm-password-error" class="errors"></span>
                 <span id="equal-password-error" class="errors"></span>
+                <span id="create-same-pass"></span>
+
             </div>
             <input type="checkbox" id="show-password">
             <label>Show password</label>
