@@ -9,14 +9,14 @@
 </head>
 <body>
     <section id="login">
-      <form id="form" class="login-container">
+      <form id="form" action="" class="login-container">
           <h1>LogIn*</h1>
           <span class="circle"></span>
           <div class="middle-main">
            
             <div class="input-name">
                 <label for="">Email</label>
-                <input id="email" type="email">
+                <input id="email" type="text">
                 <span id="email-error" class="errors"></span>
             </div>
             <div class="input-name">
@@ -27,11 +27,13 @@
             <input type="checkbox" id="show-password">
             <label for="">Show password</label>
             <div class="signup">
-              <button type="submit">
-                Log In
-                </button></p>
+              <a href="./adminPanel/dashboard.html">
+                <button id="sen" type="submit">
+                    Log In
+                  </button>
+              </a>
               <span> or </span>
-              <span class="login"><a href="./signup.html">Sign Up</a></span>
+              <span class="login"><a href="./adminPanel/dashboard.html">Sign Up</a></span>
             </div>
             <div class="goBack-login">
               <a href="./index.html">Go Home</a>

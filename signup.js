@@ -11,6 +11,8 @@ const equalPasswordError = document.getElementById('equal-password-error')
 
 
 form.addEventListener('submit', (e) => {
+   const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
+
    if(usernameInput.value === "" || usernameInput.value === null) {
     usernameError.innerText = "please your username required"
        e.preventDefault()
@@ -19,8 +21,8 @@ form.addEventListener('submit', (e) => {
     usernameError.innerHTML ="";
     usernameInput.value =""
    }
-   if(emailInput.value === '' || emailInput.value === null) {
-    emailError.innerHTML = "please your email required"
+   if(!emailInput.value.match(email_validation)) {
+    emailError.innerHTML = "please your email is incorrect"
     e.preventDefault()
    }
    else {
@@ -59,10 +61,6 @@ form.addEventListener('submit', (e) => {
   }
   
 })
-
-
-
-
 const passwordField = document.getElementById('password');
 const confirmPasswords = document.getElementById('confirm-password');
 const showPass = document.getElementById('show-password');

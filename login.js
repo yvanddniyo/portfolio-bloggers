@@ -6,8 +6,9 @@ const form = document.getElementById('form')
 
 
 form.addEventListener('submit', (e) => {
-    if(emailInput.value === '' || emailInput.value === null) {
-        emailError.innerHTML = "please your email required"
+    const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
+    if(!emailInput.value.match(email_validation)) {
+        emailError.innerHTML = "please your email is incorrect"
         e.preventDefault()
        }
        else {
@@ -35,3 +36,8 @@ const passwordField = document.getElementById('password');
     'text' : 'password'
     passwordField.setAttribute('type', type)
 })
+const loginButton = document.getElementById('send');
+
+loginButton.addEventListener('click', () => {
+    window.location.href = './adminPanel/dashboard.html';
+});

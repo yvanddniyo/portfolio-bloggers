@@ -311,14 +311,23 @@
                 </div>
                 <div class="main-content-blog">
                     <h1>What does it takes to become a web developer ?</h1>
-                    <p>Web developer , also known as web development, encompass  a variety of task and 
+                    <p>Web developer, also known as web development, encompass  a variety of task and 
                         process involved in creating a websites for the internet.
                     </p>
                         <div class="more-info">
-                            <a href="./article.html">Read more >></a>
-                            <span><i class="fa-solid fa-heart"></i> 3</span>
-                            <span><i class="fa-solid fa-comment"></i> 3</span>
-                        </div>
+                           <p><a href="./article.html">Read more >></a></p> 
+                            <div class="likes-comments">
+                              <a href="#">
+                                <i class="fa-solid fa-heart"></i> 
+                              </a>
+                              <span>3</span>
+                              <a href="#">
+                              <i class="fa-solid fa-comment"></i>  
+                              </a>
+                              <span>3</span>
+                            </div>
+                         </div>
+                        
                         <div class="info-blog">
                            <p class="web-dev">Web developer</p> 
                            <p class="author"> Text: <span>Yvan</span></p>
@@ -334,14 +343,23 @@
                 </div>
                 <div class="main-content-blog">
                     <h1>What does it takes to become a web developer ?</h1>
-                    <p>Web developer , also known as web development, encompass  a variety of task and 
+                    <p>Web developer, also known as web development, encompass  a variety of task and 
                         process involved in creating a websites for the internet.
                     </p>
                         <div class="more-info">
-                            <a href="./article.html">Read more >></a>
-                            <span><i class="fa-solid fa-heart"></i> 3</span>
-                            <span><i class="fa-solid fa-comment"></i> 3</span>
-                        </div>
+                           <p><a href="./article.html">Read more >></a></p> 
+                            <div class="likes-comments">
+                              <a href="#">
+                                <i class="fa-solid fa-heart"></i> 
+                              </a>
+                              <span>3</span>
+                              <a href="#">
+                              <i class="fa-solid fa-comment"></i>  
+                              </a>
+                              <span>3</span>
+                            </div>
+                         </div>
+                        
                         <div class="info-blog">
                            <p class="web-dev">Web developer</p> 
                            <p class="author"> Text: <span>Yvan</span></p>
@@ -359,7 +377,7 @@
     </div>
   </section>
   <section id="contact">
-    <form id="form" class="container-contact">
+    <div id="form" class="container-contact">
         <div class="logo-code">
             <img src="./assets/intro.png" alt="intro">
         </div>
@@ -378,31 +396,31 @@
         <div class="title-main-contact">
             <p>Send Me A message</p>
         </div>
-        <div class="container-info-mail">
-            <div class="nameInput">
-                <label for="">Your name*</label>
-                <input id="name" type="text" placeholder="Your Full name">
-                <span id="name-error" class="errors"></span>
+        <form id="form">
+            <div class="container-info-mail">
+                <div class="nameInput">
+                    <label for="">Your name*</label>
+                    <input id="name" type="text" placeholder="Your Full name">
+                    <span id="name-error" class="errors"></span>
+                </div>
+                <div class="nameInput">
+                    <label for="">Your Email*</label>
+                    <input id="email" type="text" placeholder="Your Email">
+                    <span id="email-error" class="errors"></span>
+                </div>
             </div>
-            <div class="nameInput">
-                <label for="">Your Email*</label>
-                <input id="email" type="email" placeholder="Your Email">
-                <span id="email-error" class="errors"></span>
-
+            <div class="nameInput-message">
+                <label for="">Your message*</label>
+                <textarea id="message" type="text" placeholder="Your message" onkeyup="disableCommentButton()"></textarea>
+                <span id="message-error" class="errors"></span>
             </div>
-        </div>
-        <div class="nameInput-message">
-            <label for="">Your message*</label>
-            <textarea id="message" type="text" placeholder="Your message" onkeyup="disableCommentButton()"></textarea>
-            <span id="message-error" class="errors"></span>
-
-        </div>
-        <div class="title-main-send">
-            <button id="send" type="submit">Send 
-                <i class="fa-solid fa-paper-plane"></i>
-            </button>
-        </div>
-    </form>
+            <div class="title-main-send">
+                <button id="send" type="submit">Send
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+    </div>
 
     <!-- FOOTER SECTION -->
 

@@ -41,31 +41,41 @@ const submit = document.getElementById('send');
 const form  = document.getElementById('form')
 
 form.addEventListener('submit', (e)=> {
+
+  //  REXEXPRESSION THAT CHECK AN EMAIL
+
+  const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
+
   if (nameInput.value === '' || nameInput === null) {
-    nameError.innerText = "please your name required"
     e.preventDefault();
+    nameError.innerText = "please your name required"
   }
   else {
-    nameError.innerText =""
+    nameError.innerText ="";
+    nameError.value ="";
   }
   
-  if (emailInput.value === '' || emailInput === null) {
-    emailError.innerText = "please your email required"
+  if (!emailInput.value.match(email_validation)) {
     e.preventDefault();
+    emailError.innerText = "please your email incorrect"
   }
   else {
-    emailError.innerText = ""
+    
+    emailError.innerText = "";
+    emailError.value = "";
   }
   if (messageInput.value === '' || messageInput === null) {
-    messageError.innerText = "please your message required"
     e.preventDefault();
+    messageError.innerText = "please your message required"
   }
   else if (messageInput.value.length <= 12) {
-    messageError.innerText = "must have at least 12 character to up"
     e.preventDefault();
+    messageError.innerText = "must have at least 12 character to up"
   }
   else {
-    messageError.innerText =""
+    
+    messageError.innerText ="";
+    messageError.value="";
   }
 })
 

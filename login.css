@@ -77,7 +77,7 @@ a li ul{
  border: none;
  font-family: poppins;
 }
-.signup button {
+.signup button a{
     background-color: #4A63E7;
     padding:6px 12px;
     border-radius: 16px;
