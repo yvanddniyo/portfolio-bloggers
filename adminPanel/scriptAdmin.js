@@ -53,19 +53,7 @@ form.addEventListener('submit', (e) => {
  } 
 })
 
-let prevScrollPos = window.pageYOffset;
 
-window.onscroll = function() {
-  let currentScrollPos = window.pageYOffset;
-
-  if (prevScrollPos > currentScrollPos) {
-    document.querySelector('#admin').style.top = '0';
-  } else {
-    document.querySelector('#admin').style.top = '-300px'; 
-  }
-
-  prevScrollPos = currentScrollPos;
-}
 
 
 
