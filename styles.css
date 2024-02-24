@@ -680,6 +680,9 @@ a li ul{
      font-size: 32px;
      color: #58D10E;
  }
+ .contact-text {
+    text-align: center;
+ }
  .container-info-mail {
     display: flex;
     /* flex-wrap: wrap; */
@@ -755,6 +758,7 @@ a li ul{
     padding: 0px 5px;
     font-size: 14px;
  }
+ 
  #footer {
     width: 100%;
     margin: 0rem 0px 0px 0px;
@@ -796,7 +800,7 @@ a li ul{
     .container-navbar-lists {
         position: fixed;
         left: -1300px;
-        top: 70px;
+        top: 60px;
         gap: 0;
         display: flex;
         flex-direction: column;
@@ -858,7 +862,8 @@ a li ul{
          font-size: 15px;
       }
      .title-main-contact p {
-        font-size: 28px;
+        border: 1.8px solid #18e614;
+        font-size: 18px;
      }
     #contact {
         padding: 0px 20px;
@@ -877,6 +882,7 @@ a li ul{
         /* border-radius: 12px; */
         margin: 0 -14px;
         z-index: 100;
+        padding: 0px 0px;
     }
     .my-project div img {
         max-width: 100%;
@@ -915,6 +921,10 @@ a li ul{
     .main-content-blog p {
         width: 100%;
     }
+    .main-content-blog h1 {
+        font-size: 14px;
+        padding: 0.4rem 0px;
+    }
     #my-work {
         height: 100%;
         padding: 0px 12px;
@@ -934,6 +944,9 @@ a li ul{
        }
     .main-content-project{
         margin: 2rem 0px 0px 0px; 
+    }
+    .card-one p {
+        font-size: 14px;
     }
     .lang-contanier-circle {
         gap: 1rem;
@@ -1004,6 +1017,7 @@ a li ul{
     }
     .text-project p{
         width: 100%;
+        padding: 20px;
     }
    
 }
