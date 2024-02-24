@@ -1051,6 +1051,9 @@ a li ul{
     margin-top: 1.7rem;
     margin-bottom: 1rem;
 }
+.container-blog-title {
+    text-align: center;
+}
 .container-blog-title h2{
     margin: 2rem 0px;
     border: 2px solid #1eb1b6;
