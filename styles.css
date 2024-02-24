@@ -175,13 +175,15 @@ a li ul{
     background-color: #3C3535;
     border: 3px solid #189780;
     color: white;
+    display: flex;
     flex-direction: column;
     text-align: center;
     padding: 20px 0px;
     border-radius: 20px;
 }
-.container-items p{
-  padding: 2rem 0px;
+.container-items a{
+  padding: 1.6rem 0px;
+  color: white;
 }
 #about-me {
     width: 100%;
@@ -213,6 +215,9 @@ a li ul{
     margin: 2rem 0px;
 }
 .name-text {
+    color: #22E742;
+}
+.react {
     color: #22E742;
 }
 .blog{
@@ -1000,6 +1005,7 @@ a li ul{
     .text-project p{
         width: 100%;
     }
+   
 }
 
 @media screen and (max-width: 1226px) {

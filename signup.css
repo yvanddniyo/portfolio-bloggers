@@ -107,6 +107,11 @@ a li ul{
    text-decoration: underline;
    color: #da19e0;
 }
+.show-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media screen and (max-width: 920px) {
     .login-container {
