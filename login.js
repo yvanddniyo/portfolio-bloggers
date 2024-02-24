@@ -25,6 +25,16 @@ form.addEventListener('submit', (e) => {
        passwordInput.value =""
        }
 })
+// remove ERROR
+
+const startTyping = () => {
+    if (emailInput.value) {
+      emailError.innerText = ""
+    }
+   if(passwordInput.value){
+      passwordError.innerText = ""
+    }
+  }
 
 // SHOW OR HIDE PASSWORD
 

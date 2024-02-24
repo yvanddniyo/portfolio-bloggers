@@ -402,18 +402,20 @@
             <div class="container-info-mail">
                 <div class="nameInput">
                     <label for="">Your name*</label>
-                    <input id="name" type="text" placeholder="Your Full name">
+                    <input id="name" type="text" placeholder="Your Full name"
+                     onkeyup="startTyping()">
                     <span id="name-error" class="errors"></span>
                 </div>
                 <div class="nameInput">
                     <label for="">Your Email*</label>
-                    <input id="email" type="text" placeholder="Your Email">
+                    <input id="email" type="text" placeholder="Your Email"
+                    onkeyup="startTyping()">
                     <span id="email-error" class="errors"></span>
                 </div>
             </div>
             <div class="nameInput-message">
                 <label for="">Your message*</label>
-                <textarea id="message" type="text" placeholder="Your message" onkeyup="disableCommentButton()"></textarea>
+                <textarea id="message" type="text" placeholder="Your message"  onkeyup="startTyping()"></textarea>
                 <span id="message-error" class="errors"></span>
             </div>
             <div class="title-main-send">

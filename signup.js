@@ -61,6 +61,23 @@ form.addEventListener('submit', (e) => {
   }
   
 })
+
+// remove error
+
+const startTyping = () => {
+   if (usernameInput.value  ) {
+     usernameError.innerText = ""
+     // messageError.innerText = ""
+ 
+   }
+  if(emailInput.value){
+     emailError.innerText = ""
+   }
+  if(passwordInput.value){
+     passwordError.innerText = ""
+   }
+ }
+
 const passwordField = document.getElementById('password');
 const confirmPasswords = document.getElementById('confirm-password');
 const showPass = document.getElementById('show-password');

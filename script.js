@@ -95,5 +95,18 @@ const disableCommentButton = () => {
    }
 }
 
+const startTyping = () => {
+  if (nameInput.value  ) {
+    nameError.innerText = ""
+    // messageError.innerText = ""
+
+  }
+ if(emailInput.value){
+    emailError.innerText = ""
+  }
+ if(messageInput.value){
+    messageError.innerText = ""
+  }
+}
 
  
