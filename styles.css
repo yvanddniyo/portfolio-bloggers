@@ -539,7 +539,7 @@ a li ul{
 .main-content-blog p {
     width: 100%;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 12px;
 }
 .main-content-blog h3 {
     padding: 0px 0px 1rem 0px;
@@ -1105,6 +1105,7 @@ a li ul{
 }
 .text-container p {
     padding: 1rem 0px;
+    font-size: 12px;
 }
 .text-container p a {
     color: #1A9718;
@@ -1120,7 +1121,6 @@ a li ul{
     align-items: left;
     flex-wrap: wrap;
     gap: 1rem;
-    
 }
 .references p{
   background-color: gray;
