@@ -37,13 +37,14 @@ form.addEventListener('submit', (e) => {
    imageError.innerText = ''
    imageError.value = ''
  }
- if (textAreaInput.value === '' || textAreaInput.value === null) {
+ if (tinymce.get('content').getContent() === '' || tinymce.get('content').getContent()=== null) {
    e.preventDefault();
    textAreaError.innerText = 'please add content'
  } else {
    textAreaError.innerText = ''
-   textAreaError.value = ''
- } if (textAreaInput.value.length <=10) {
+   textAreaInput.value = ''}
+  
+ if (tinymce.get('content').getContent()<=10) {
    e.preventDefault();
    textAreaError.innerText = 'sorry, you need to add more than 10 characters'
  }

@@ -45,12 +45,12 @@
           <form id="form"  class="container-text-editor">
             <div class="title-article">
                 <label for="none">Title*</label>
-                <input id="title" type="text" placeholder="Your blog title">
+                <input id="title" type="text" placeholder="Your blog title" >
                 <span id="title-error" class="errors"></span>
             </div>
             <div class="choose-image">
                 <label for="none">Image*</label>
-                <input id="image" type="file" placeholder="Your blog title">
+                <input id="image" type="file" placeholder="Your blog title" accept="image*/" onclick="handleImageUpload() ">
                 <span id="image-error" class="errors"></span>
             </div>
             <div class="description">
@@ -59,7 +59,7 @@
                <span id="textarea-error" class="errors"></span>
             </div>
             <div class="save-article">
-                <button id="save" type="submit">Save</button>
+                <button id="save" type="submit" onclick="saveLocalStorage()">Save</button>
             </div>
           </form>
       </div>
@@ -67,6 +67,8 @@
      
     </section>
     <script src="./scriptAdmin.js"></script>
+    <script src="createBlog.js"></script>
+
 <script src="https://cdn.tiny.cloud/1/vgihld2tldxke423vmoyspn8xce57tcnzh1oyb4jl6iaa8oe/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
