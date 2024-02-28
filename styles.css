@@ -781,7 +781,93 @@ a li ul{
     font-size: 13px;
  }
 
+ /* leave a comment */
+
+ .leave-a-comment p{
+    margin: 1rem 12px;
+    padding: 1rem 12px;
+  }
+  .leave-a-comment h4 {
+    color: #1eb1b6;
+    margin: 2rem 0px 1rem 0px;
+  }
+  .leave-a-comment input {
+    width: 40%;
+    padding: 0.6rem 14px;
+    outline: none;
+    border-radius: 5px;
+    font-family: poppins;
+  }
+   input::placeholder{
+    font-family: poppins;
+  }
+  .leave-a-comment textarea{
+    margin: 0.5rem 0px;
+    padding: 0.5rem 14px;
+    width: 90%;
+    outline: #2ecc71;
+    border: 1px solid #3498db;
+    border-radius: 10px;
+    font-family: poppins;
+  }
+  .leave-a-comment button {
+      text-align: center;
+      border: none;
+      background-color: #092458;
+      padding: 0.5rem 2rem;
+      color: white;
+      font-family: poppins;
+       border-radius: 30px;
+       cursor: pointer;
+       margin-bottom: 1rem ;
+  }
+
+  /* // usercomment */
+
+  .comments {
+    width: 100%;
+    
+    margin: 1rem 0px;
+}
+.comment-user {
+    width: 50%;
+    height: 100%;
+    margin-top: 1rem;
+}
+.comment-user img{
+  width: 10%;
+  height: 30%;
+  border-radius: 50%;
+}
+ .date{
+    font-size: 10px;
+}
+.user-comments p{
+    width: 60%;
+    font-size: 13px;
+}
+
+/* //LIKE AND COMMECT  */
+
+.more-info span{
+    color: #22E742;
+    padding: 1px 12px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 1s ease-in;
+  }
+  .more-info span:hover{
+    color: #189780;
+  }
+  
+
 @media screen and (max-width: 993px) {
+    .comment-user {
+        margin-top: 10px;
+    }
+    .leave-a-comment input {
+        width: 90%;
+    }
     .container-contact {
         padding: 0px 20px;
     }
@@ -1078,7 +1164,7 @@ a li ul{
     cursor: pointer;
 }
 .container-articles {
-    padding: 4rem 20rem 2rem  20rem;
+    padding: 4rem 25rem 2rem  25rem;
     color: #d1d0d0;
 }
 
@@ -1115,6 +1201,7 @@ a li ul{
 .img-article  img{
     /* height: 19rem; */
     width: 100%;
+    height: 20rem;
     object-fit: cover;
 }
 .text-container p {

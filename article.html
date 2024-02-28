@@ -65,6 +65,12 @@
                     <div class="img-article">
                         <img src="./assets/blogs.jpeg" alt="article">
                     </div>
+                    <div class="more-info">
+                        <span><i class="fa-solid fa-heart"></i> 3</span>
+                        <a href="#comments">
+                            <span><i class="fa-solid fa-comment"></i> 3</span>
+                        </a>
+                    </div>
                  <div class="text-container">
                     <p class="">
                         Can you believe that we're part of a world where over 5.30 billion people are connected through the Internet? That's more than half of our global population, actively engaging in research, connection, education, and entertainment through this incredible digital universe. Personally, I believe the Internet isn’t just a luxury; it's a fundamental part of our daily lives.
@@ -95,6 +101,22 @@
                     <p>Full-stack development</p>
                 </div>
 
+                <form id="comments" class="leave-a-comment">
+                    <h4>Leave a comment</h4>
+                    <div class="your-name">
+                        <input type="text" placeholder="Your name" id="client-name">
+                        <span class="text-error" class="errors"></span>
+                    </div>
+                    <textarea name="content" id="content" cols="30" rows="10"
+                    placeholder="Leave us a comment" onkeyup="disableCommentButton()"></textarea><br>
+                    <span id="word-needed"></span><br>
+                    <button id="send" type="submit" onclick="addCommnents()">Comment</button>
+                </form>
+                <div class="comments-container" id="comment-section"></div> 
+                <div class="view-more-blog">
+                    <a href="#"> More Comments </a>
+                </div>
+                
               <div class="you-might-like">
                 <h1>You Might Also Like</h1>
                 <div class="line-btn"></div>
@@ -192,6 +214,10 @@
     </section>
   </section>
   <script src="script.js"></script>
+  <script src="articleComment.js"></script>
+  <script>
+    
+</script>
 </body>
 </html>
 

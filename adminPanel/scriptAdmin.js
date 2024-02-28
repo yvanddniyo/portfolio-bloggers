@@ -56,5 +56,19 @@ form.addEventListener('submit', (e) => {
 
 
 
+const commentForm = document.getElementById('comments');
+const inputValue = document.getElementById('client-name'); 
+const  nameError = document.getElementById('text-error')
+const  contentInput = document.getElementById('content')
+const  contentError = document.getElementById('word-needed')
+
+commentForm.addEventListener('submit', (e) => {
+   if(inputValue.value === '' || contentInput === null) {
+       e.preventDefault();
+       nameError.innerText = "your name"
+   }
+})
+
+
 
 

@@ -18,21 +18,29 @@ const saveLocalStorage = () => {
       reader.onload = function () {
         const imageDataURL = reader.result;
 
+        const specificDate = new Date(); 
+        const year = specificDate.getFullYear();
+        const month = specificDate.getMonth() + 1;
+        const day = specificDate.getDate();
+
         const newBlog = {
           title: blogTitle.value,
           image: imageDataURL,
           description: tinymce.get('content').getContent(),
           comment: 0,
           likes: 0,
+          year: year,
+          month: month,
+          day: day
         };
 
         blogData.push(newBlog);
         localStorage.setItem('blogData', JSON.stringify(blogData));
 
-        alert('Blog submitted successfully');
+        // alert('Blog submitted successfully');
       };
     } else {
-      alert('Please select an image first.');
+      // alert('Please select an image first.');
     }
   };
 

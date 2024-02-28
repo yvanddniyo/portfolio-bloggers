@@ -205,14 +205,14 @@
  flex-direction: column;
 }
 .title-article label{
- width: 100%;
+ width: 21%;
  padding: 1rem 0px;
  font-weight: bold;
 }
 .title-article input{
   /* width: 60%; */
   outline: none;
-  margin:0rem 5rem;
+  margin:0rem 3.1rem;
   border: 1.5px solid #5AA341;
   padding: 0.5rem 0.6rem 0.5rem 0.5rem;
   border-radius: 6px;
@@ -226,33 +226,36 @@
     display: flex;
     flex-direction: column;  
 }
+
 .choose-image label{
-    width: 100%;
+    width: 23%;
     padding: 1rem 0px; 
     font-weight: bold; 
 }
 .choose-image input{
     outline: none;
-    margin:0rem 5rem;
+    margin:0rem 3.1rem;
     border: 1.5px solid #5AA341;
     padding: 0.5rem 0.6rem 0.5rem 0.5rem; 
     border-radius: 6px;
 }
 .description {
-    width: 65%;
+    width: 69%;
     height: 300px;
     display: flex;
     flex-direction: column; 
     /* z-index: -1; */
 }
 .description label {
-    width: 100%;
+    width: 18%;
     padding: 1rem 0px; 
     font-weight: bold;  
 }
 .description textarea {
     box-shadow: -4px 3px 9px 11px rgba(0,0,0,0.21);
     padding: 12px;
+    margin:0rem 1.1rem;
+    
 }
 .save-article button{
         text-align: center;
@@ -296,11 +299,20 @@
     width: 86%;
     margin:-30rem 2rem 0px 2rem;
     }
+    .choose-image label{
+        width: 10%;
+    }
+    .title-article label{
+        width: 10%;
+    }
     .choose-image input{
         margin:0rem 0rem;
     }
     .title-article input{
         margin:0rem 0rem;
+      }
+      .description label {
+        width: 10%;
       }
       .description {
         width: 80%;
