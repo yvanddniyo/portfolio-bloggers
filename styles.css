@@ -562,7 +562,17 @@ a li ul{
 .likes-comments {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     /* gap: 2rem; */
+}
+.likes-comments  p{
+    font-size: 15px;
+}
+.likes-comments span {
+    font-size: 17px;
+}
+.comments {
+    font-size: 13px;
 }
 
 .view-more-blog {

@@ -39,85 +39,72 @@
         </div>
        </div>
     </section>
+    <section id="main-content over-lapping" >
+        <div class="add-blog" id="adds">
+            <form id="form"  class="container-text-editor pop-edit">
+              <div class="title-article">
+                  <label for="none">Title*</label>
+                  <input id="title" type="text" placeholder="Your blog title" >
+                  <span id="title-error" class="errors"></span>
+              </div>
+              <div class="choose-image">
+                  <label for="none">Image*</label>
+                  <input id="image" type="file" placeholder="Your blog title" accept="image*/">
+                  <span id="image-error" class="errors"></span>
+              </div>
+              <div class="description">
+                  <label for="none">Description*</label>
+                 <textarea id="content"></textarea>
+                 <span id="textarea-error" class="errors"></span>
+              </div>
+              <div class="save-article">
+                  <button id="save" type="submit" onclick="saveLocalStorage()">Save</button>
+              </div>
+            </form>
+        </div>
+      </section>
     <section id="main-content">
-      <div class="view-article">
-        <div class="an-article">
-            <div class="image-article">
-                <img src="../assets/blogs.jpeg" alt="blog">
-            </div>
-            <p>How to become a good developer in 2024.</p>
-            <div class="icons-blogs">
-                <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
-                <a href=""><i class="fa-solid fa-pen"></i></a>
-                <a href=""><i class="fa-solid fa-trash"></i></a>
+      <div class="view-article" id="container-article"></div>
+</div>
+<div class="view-more-blog">
+    <a href="#"> View More Blog </a>
+</div>
+</section>
+<script src="./scriptAdmin.js"></script>
+<script src="viewArticle.js"></script>
+<script src="https://cdn.tiny.cloud/1/vgihld2tldxke423vmoyspn8xce57tcnzh1oyb4jl6iaa8oe/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
-            </div>
-        </div>
-        <div class="an-article">
-            <div class="image-article">
-                <img src="../assets/blogs.jpeg" alt="blog">
-            </div>
-            <p>20 reason why you need to code.</p>
-            <div class="icons-blogs">
-                <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
-                <a href=""><i class="fa-solid fa-pen"></i></a>
-                <a href=""><i class="fa-solid fa-trash"></i></a>
-
-            </div>
-        </div>
-        <div class="an-article">
-            <div class="image-article">
-                <img src="../assets/blogs.jpeg" alt="blog">
-            </div>
-            <p>May be coding is not for you.</p>
-            <div class="icons-blogs">
-                <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
-                <a href=""><i class="fa-solid fa-pen"></i></a>
-                <a href=""><i class="fa-solid fa-trash"></i></a>
-
-            </div>
-        </div>
-        <div class="an-article">
-            <div class="image-article">
-                <img src="../assets/blogs.jpeg" alt="blog">
-            </div>
-            <p>10 reason AI will not take your job.</p>
-            <div class="icons-blogs">
-                <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
-                <a href=""><i class="fa-solid fa-pen"></i></a>
-                <a href=""><i class="fa-solid fa-trash"></i></a>
-
-            </div>
-        </div>
-        <div class="an-article">
-            <div class="image-article">
-                <img src="../assets/blogs.jpeg" alt="blog">
-            </div>
-            <p>AI is dangerous more than you think.</p>
-            <div class="icons-blogs">
-                <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
-                <a href=""><i class="fa-solid fa-pen"></i></a>
-                <a href=""><i class="fa-solid fa-trash"></i></a>
-
-            </div>
-        </div>
-        <div class="an-article">
-            <div class="image-article">
-                <img src="../assets/blogs.jpeg" alt="blog">
-            </div>
-            <p>Top 5 programming language in 2024.</p>
-            <div class="icons-blogs">
-                <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
-                <a href=""><i class="fa-solid fa-pen"></i></a>
-                <a href=""><i class="fa-solid fa-trash"></i></a>
-
-            </div>
-        </div>
-    </div>
-    <div class="view-more-blog">
-        <a href="#"> View More Blog </a>
-      </div>
-    </section>
-    <script src="./scriptAdmin.js"></script>
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+  tinymce.init({
+    selector: '#content',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mergetags_list: [
+      { value: 'First.Name', title: 'First Name' },
+      { value: 'Email', title: 'Email' },
+    ],
+    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+  });
+  tinymce.init({
+  selector: '#content'
+});
+</script>
 </body>
 </html>
+
+
+
+<!-- <div class="an-article">
+    <div class="image-article">
+        <img src="../assets/blogs.jpeg" alt="blog">
+    </div>
+    <p>20 reason why you need to code.</p>
+    <div class="icons-blogs">
+        <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
+        <a href=""><i class="fa-solid fa-pen"></i></a>
+        <span id="delete-blog"><i class="fa-solid fa-trash"></i></span>
+
+    </div> -->

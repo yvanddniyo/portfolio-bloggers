@@ -10,6 +10,48 @@ const confirmPasswordError = document.getElementById('confirm-password-error')
 const equalPasswordError = document.getElementById('equal-password-error')
 
 
+// signup functionality
+// form.addEventListener('submit', (e) => {
+
+//    const signup =(e) => {
+//      let signForm = {
+//       username : usernameInput.value,
+//       email : emailInput.value,
+//       passwordInput : passwordInput.value,
+//       confirmPassword: confirmPassword.value
+//      }
+//       localStorage('signForm', JSON.stringify(signForm))
+//      console.log(signForm)
+//      e.preventDefault()
+//    }
+// })
+
+const  signUp = () => {
+//  e.preventDefault()
+   const username = document.getElementById("username").value;
+   const email = document.getElementById("email").value;
+   const password = document.getElementById("password").value;
+   const ConfirmPassword = document.getElementById("confirm-password").value;
+
+   const users =  JSON.parse(localStorage.getItem('users'))||[]
+   // const role = document.getElementById("role").value;
+
+
+   let userObj ={
+      username,
+      email,
+      password,
+      ConfirmPassword,
+      role: 'user'
+   }
+    
+   if (email === "nyvan1@gmail.com") {
+      userObj.role = "admin";
+  }
+   users.push(userObj)
+   localStorage.setItem('users', JSON.stringify(users))
+ }
+
 form.addEventListener('submit', (e) => {
    const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
 

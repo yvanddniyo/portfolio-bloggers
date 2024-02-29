@@ -16,8 +16,7 @@
     const scrollContainer = document.querySelector(".my-project");
     const backBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
-    
-   
+  
     
     backBtn.addEventListener('click', () => {
        scrollContainer.style.scrollBehavior ="smooth"

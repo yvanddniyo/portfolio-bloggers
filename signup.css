@@ -26,7 +26,7 @@ a li ul{
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
 }
@@ -40,9 +40,9 @@ a li ul{
  }
 .middle-main {
     width: 35%;
-    height: 100vh;
+    /* height:100%; */
     background-color: #fff;
-    padding: 1rem 3rem;
+    padding: 1rem 3rem 0px 3rem;
     border-radius: 20px;
 }
 .input-name {
@@ -63,6 +63,7 @@ a li ul{
 }
 .signup {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
     margin: 0.8rem 0px;

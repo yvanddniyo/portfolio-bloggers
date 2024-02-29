@@ -24,6 +24,7 @@ const saveLocalStorage = () => {
         const day = specificDate.getDate();
 
         const newBlog = {
+          id: `${blogTitle.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
           title: blogTitle.value,
           image: imageDataURL,
           description: tinymce.get('content').getContent(),
@@ -37,29 +38,8 @@ const saveLocalStorage = () => {
         blogData.push(newBlog);
         localStorage.setItem('blogData', JSON.stringify(blogData));
 
-        // alert('Blog submitted successfully');
+        alert('Blog submitted successfully');
       };
-    } else {
-      // alert('Please select an image first.');
-    }
+    } 
   };
-
-
-
-
-// function submitBlog() {
-//     const title = document.getElementById('title').value;
-//     const content = document.getElementById('content').value;
   
-//     // Get existing blogs from localStorage or initialize an empty array
-//     const existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-  
-//     // Add the new blog
-//     const newBlog = { title, content };
-//     existingBlogs.push(newBlog);
-  
-//     // Save the updated blogs to localStorage
-//     localStorage.setItem('blogs', JSON.stringify(existingBlogs));
-  
-//     alert('Blog submitted successfully!');
-//   }

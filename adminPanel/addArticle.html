@@ -50,7 +50,7 @@
             </div>
             <div class="choose-image">
                 <label for="none">Image*</label>
-                <input id="image" type="file" placeholder="Your blog title" accept="image*/" onclick="handleImageUpload()">
+                <input id="image" type="file" placeholder="Your blog title" accept="image*/">
                 <span id="image-error" class="errors"></span>
             </div>
             <div class="description">
@@ -59,12 +59,10 @@
                <span id="textarea-error" class="errors"></span>
             </div>
             <div class="save-article">
-                <button id="save" type="submit" onclick="saveLocalStorage()">Save</button>
+                <button id="save" type="submit" onclick="blogEdit()">Save</button>
             </div>
           </form>
       </div>
-      
-     
     </section>
     <script src="./scriptAdmin.js"></script>
     <script src="createBlog.js"></script>

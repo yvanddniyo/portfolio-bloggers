@@ -9,7 +9,7 @@ form.addEventListener('submit', (e) => {
     const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
     if(!emailInput.value.match(email_validation)) {
         emailError.innerHTML = "please your email is incorrect"
-        e.preventDefault()
+        // e.preventDefault()
        }
        else {
         emailError.innerHTML = "";
@@ -18,7 +18,7 @@ form.addEventListener('submit', (e) => {
     
         if(passwordInput.value.length <= 5) {
         passwordError.innerText = "password must be more that 5 characters"
-        e.preventDefault()
+        // e.preventDefault()
        }
        else {
         passwordError.innerHTML = "";
@@ -36,7 +36,37 @@ const startTyping = () => {
     }
   }
 
-// SHOW OR HIDE PASSWORD
+  //  Login sessions
+
+  const login = () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+  
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+  
+    const user = storedUsers.find(u => u.email === email && u.password === password);
+    
+  
+    if (user) {
+      if (user.role === "admin") {
+        alert('logged as an admin')
+        setTimeout(() => {
+          window.location.href = './adminPanel/dashboard.html';
+        }, 500); 
+      }
+      else {
+        alert('Login successful!');
+        setTimeout(() => {
+          window.location.href = './blogs.html';
+        }, 500); 
+      }
+      } 
+  };
+  
+
+
+
+  // SHOW OR HIDE PASSWORD
 
 const passwordField = document.getElementById('password');
  const showPass = document.getElementById('show-password');
@@ -46,8 +76,4 @@ const passwordField = document.getElementById('password');
     'text' : 'password'
     passwordField.setAttribute('type', type)
 })
-const loginButton = document.getElementById('send');
 
-loginButton.addEventListener('click', () => {
-    window.location.href = './adminPanel/dashboard.html';
-});
