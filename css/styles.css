@@ -807,7 +807,7 @@ a li ul{
     margin: 2rem 0px 1rem 0px;
   }
   .leave-a-comment input {
-    width: 40%;
+    width: 90%;
     padding: 0.6rem 14px;
     outline: none;
     border-radius: 5px;
@@ -885,6 +885,31 @@ a li ul{
     width: 60%;
     background-color: white;
   }
+
+  /* Logeed in user in the page */
+  .login-user {
+    margin-top: -0.2rem;
+    outline: none;
+    border: 0.3px solid #11110F;
+    font-family: poppins;
+    padding: 0.5em 0.7rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #18e614;
+     display: flex;
+     align-items: center;
+     background:#11110F;
+  }
+ 
+  .login-user option {
+    border-radius: 20px;
+  }
+  #user-logout {
+  color:#D22D2D;
+  }
+  /* .close */
+  
  
   
 
@@ -943,6 +968,7 @@ a li ul{
         display: flex;
         align-items: center;
     }
+
    
     .chevron-right .chevron-left {
         width: 30px;
