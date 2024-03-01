@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- <link rel="stylesheet" href="blogs.css"> -->
+    <title>Portofolio || Blogger</title>
+</head>
+<body>
+    <Section id="landing-page">
+        <div class="container-nav">
+            <div class="container-logo">
+                <img src="../assets/main Logo.png" alt="Logo">
+            </div>
+            <div class="container-navbar">
+                <ul class="container-navbar-lists">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="">About me</a>
+                    </li>
+                    <li>
+                        <a href="">Skills</a>
+                    </li>
+                    <li>
+                        <a href="">My project</a>
+                    </li>
+                    <li>
+                        <a href="../Html/blogs.html">Blogs</a>
+                    </li>
+                    <li class="signup">
+                        <a href="../Html/signup.html">Sign Up</a>
+                    </li>
+                    <li class="login">
+                        <a href="../Html/login.html">LogIn</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menus">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+        </div>
+        <div class="line-article"></div>
+          <div class="container-articles">
+              
+              <div class="" id="main-article"></div>
+
+                <form id="form"class="leave-a-comment" onsubmit="return addComments()">
+                    <h4>Leave a comment</h4>
+                    <div class="your-name">
+                        <input type="text" placeholder="Your name" id="client-name"><br>
+                        <span class="text-error" style="font-size: 13px; color: brown;"></span>
+                    </div>
+                    <textarea name="content" id="content" cols="30" rows="10"
+                    placeholder="Leave us a comment" ></textarea><br>
+                    <span class="message-err" style="font-size: 13px; color: brown;"></span>
+                    <span id="word-needed"></span><br>
+                    <button id="send" type="submit"
+                    onclick="addComments(blogId)">
+                        Comment
+                    </button>
+                 </form>
+                <div class="comments-container" id="comment-section"></div> 
+                <div class="view-more-blog">
+                    <a href="#"> More Comments </a>
+                </div>
+                
+              <div class="you-might-like">
+                <h1>You Might Also Like</h1>
+                <div class="line-btn"></div>
+                <div class="photo-container-blog">
+                  
+               </div>
+               <div class="line-btn"></div>
+               <div class="photo-container-blog">
+                  
+                  </div>
+              </div>
+                <div class="line-article"></div>
+              </div>  
+          </div>
+         
+    </Section>
+  <section id="contact">
+    <section id="footer">
+        <!-- <div class="line-btn"></div> -->
+    <div class="container-footer">
+        <div class="copyright">
+            <i class="fa-solid fa-copyright"></i>
+            Yvanniyonshima. all right Reserved
+        </div>
+        <div class="copyright">
+           <a href="">   privacy and policy</a>
+        </div>
+        <div class="copyright">
+            <a href="">Terms and Condition</a>
+        </div>
+        <div class="copyright">
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="copyright">
+            coded by<span>Yvan</span>
+        </div>
+    </div>
+    </section>
+  </section>
+  <script src="../script/script.js"></script>
+  <script src="../script/articleComment.js"></script>
+  <script>
+  
+
+</script>
+</body>
+</html>
+
