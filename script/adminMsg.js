@@ -22,6 +22,7 @@ const messageFromClient = () => {
     storedMessages.push(messObj);
   
     localStorage.setItem('messages', JSON.stringify(storedMessages));
+    
   
     alert('Blog submitted successfully');
   };
@@ -41,6 +42,7 @@ usr.innerText = users.length
 const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
 const bgl = document.getElementById('blogs')
 bgl.innerText = blogs.length
+
 
 
   

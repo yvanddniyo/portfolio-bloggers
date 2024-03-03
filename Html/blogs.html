@@ -26,7 +26,7 @@
                     </li>
                     <li>
                         <a href="">My project</a>
-                    </li>
+                    </li>   
                     <li>
                         <a href="./blogs.html">Blogs</a>
                     </li>
@@ -36,6 +36,10 @@
                     <li class="login">
                         <a href="./login.html">LogIn</a>
                     </li>
+                    <select class="login-user" id="user-dropdown" onchange="handleDropdownChange()">
+                        <option id="login-user-name" value="users-logged"></option>
+                        <option id="user-logout" value="users-logged">Log Out</option>
+                    </select>
                 </ul>
             </div>
             <div class="menus">

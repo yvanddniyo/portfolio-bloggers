@@ -1,39 +1,33 @@
   //saving the comment in the LocalStorage.
 
-const textareainput = document.getElementById('content')
+const textareainput = document.getElementById('message')
 const sectionComment = document.getElementById('comment-section')
 const submitButton = document.getElementById("send");
 const commentsContainer = document.getElementById('form');
 const usernameInput = document.getElementById('client-name');
 const nameErrors = document.querySelector('.text-error');
-const messageErrors = document.querySelector('.message-error');
+const messageErrors = document.querySelector('.message-err');
 
 commentsContainer.addEventListener('submit', (e) => {
     if (usernameInput.value === "" || usernameInput.value === null) {
         e.preventDefault();
-        if (nameErrors) {
+        // if (nameErrors) {
             nameErrors.innerText = "Please fill in the name and content.";
-        } else {
+        
             nameErrors.innerText = "";
             e.preventDefault();
-            
-        }
-    } else {
+    }
+     else {
         usernameInput.value = '';
         e.preventDefault();
-
     }
-
     if (sectionComment.value === "" || sectionComment.value === null) {
-        if (nameErrors) {
-            // e.preventDefault();
+            e.preventDefault();
             messageErrors.innerText = "Please fill in the name and content.";
+       
         } else {
+            sectionComment.value = '';
             messageErrors.innerText = "";
-            
-        }
-    } else {
-        sectionComment.value = '';
     }
 });
 
@@ -41,11 +35,13 @@ commentsContainer.addEventListener('submit', (e) => {
 
 
 // Adding independent blog read
+
   const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
   const urlParams = new URLSearchParams(window.location.search);
   const blogId = urlParams.get('id');
   const blog = JSON.parse(localStorage.getItem(`blog_${blogId}`));
-  console.log(blog);
+
+//   console.log(blogId);
   const commentStoreKey = `commentStore_${blogId}`;
   const commentStore = JSON.parse(localStorage.getItem(commentStoreKey)) || [];
 
@@ -88,11 +84,6 @@ commentsContainer.addEventListener('submit', (e) => {
 } else {
     console.error('Blog id not provided in the URL');
 }
-
-
-
-
-
 const addComments = (blogId) => {
     const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
     const commentStoreKey = `commentStore_${blogId}`;
@@ -108,43 +99,46 @@ const addComments = (blogId) => {
     };
 
     if (usernameInput === "" || textareainput.value === "") {
-        alert('please insert name and message')
-    } 
-    else {
+        alert('please insert name and message');
+    } else {
         commentStore.push(commentsObj);
         localStorage.setItem(commentStoreKey, JSON.stringify(commentStore));
+
+        // Update the DOM immediately after adding a new comment
+        updateCommentsUI(blogId);
     }
 };
-document.addEventListener('DOMContentLoaded', () => {
-    
 
-    sectionComment.innerHTML =""
-    
-        // const comments = JSON.parse(localStorage.getItem('commentStore')) || [];
-        // console.log(comments);
-        const commentStoreKey = `commentStore_${blogId}`;
-        const commentStore = JSON.parse(localStorage.getItem(commentStoreKey)) || [];
-        const blogComment = commentStore.filter(comment => comment.blogId === blogId)
-        console.log(commentStore);
-    
-       blogComment.forEach(comment => {
-            const commentsHTML = `
+const updateCommentsUI = (blogId) => {
+    const commentStoreKey = `commentStore_${blogId}`;
+    const commentStore = JSON.parse(localStorage.getItem(commentStoreKey)) || [];
+    const blogComment = commentStore.filter(comment => comment.blogId === blogId);
+
+    sectionComment.innerHTML = "";
+
+    blogComment.forEach(comment => {
+        const commentsHTML = `
             <div class="comments">
                 <div class="comment-user">
-                <img src="https://static.vecteezy.com/system/resources/previews/005/129/844/non_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
+                    <img src="https://static.vecteezy.com/system/resources/previews/005/129/844/non_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
                 </div>
                 <div class="user-comments">
-                <h3>${comment.visitor}</h3>
-                <p class="data">${comment.date}</p>
-                <p>${comment.message}</p>
+                    <h3>${comment.visitor}</h3>
+                    <p class="data">${comment.date}</p>
+                    <p>${comment.message}</p>
                 </div>
-            </div> 
-                        `
-            
-                sectionComment.innerHTML+= commentsHTML
-        })
-        
-    })
+            </div>
+        `;
+
+        sectionComment.innerHTML += commentsHTML;
+    });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    sectionComment.innerHTML = "";
+    updateCommentsUI(blogId);
+});
+
 
 
 

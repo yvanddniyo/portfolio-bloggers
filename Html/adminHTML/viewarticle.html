@@ -39,9 +39,13 @@
         </div>
        </div>
     </section>
+    
     <section id="main-content over-lapping" >
         <div class="add-blog" id="adds">
             <form id="form"  class="container-text-editor pop-edit">
+                <div class="close" onclick="closeForm()">
+                    <p class="close-icon"><i class="fa-solid fa-xmark"></i></p>
+                </div>
               <div class="title-article">
                   <label for="none">Title*</label>
                   <input id="title" type="text" placeholder="Your blog title" >
@@ -49,7 +53,11 @@
               </div>
               <div class="choose-image">
                   <label for="none">Image*</label>
-                  <input id="image" type="file" placeholder="Your blog title" accept="image*/">
+                  <input id="image" type="file" placeholder="Your blog title" accept="image*/" onchange="previewNewImage(this)">
+                  <p id="current-img"></p>
+                  <img style="width: 30%; padding-top:10px;" id="currentImagePreview" alt="Current Blog Image">
+                  <img style="width: 30%; padding-top:10px;" id="newImagePreview" alt="New Blog Image" style="display: none;">
+                  <p id="updated-img"></p>
                   <span id="image-error" class="errors"></span>
               </div>
               <div class="description">
@@ -58,7 +66,7 @@
                  <span id="textarea-error" class="errors"></span>
               </div>
               <div class="save-article">
-                  <button id="save" type="submit" onclick="saveLocalStorage()">Save</button>
+                  <button id="save" type="submit" onclick="updateBlog()">Save</button>
               </div>
             </form>
         </div>
@@ -97,14 +105,3 @@
 
 
 
-<!-- <div class="an-article">
-    <div class="image-article">
-        <img src="../assets/blogs.jpeg" alt="blog">
-    </div>
-    <p>20 reason why you need to code.</p>
-    <div class="icons-blogs">
-        <a href="./viewBlog.html"><i class="fa-solid fa-eye"></i></a>
-        <a href=""><i class="fa-solid fa-pen"></i></a>
-        <span id="delete-blog"><i class="fa-solid fa-trash"></i></span>
-
-    </div> -->

@@ -43,7 +43,7 @@ for (let i = 0; i < message.length && i < 7; i++) {
       <div class="message-clients" id="${msg.id}">
       <h2 style="font-size: 17px;">${msg.name}</h2>
       <h6 style="margin:10px 0; color: #456;">Email: ${msg.email}</h6>
-      <p style="font-size: 14px;">${msg.message}</p>
+      <p style="font-size: 14px; width:200px">${msg.message}</p>
       
           <button class="reply">Reply</button>
           <button class="delete" onclick="deleteMessage(this)">Delete</button>

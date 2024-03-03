@@ -41,29 +41,38 @@ const startTyping = () => {
   const login = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-  
+
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-  
+
     const user = storedUsers.find(u => u.email === email && u.password === password);
-    
+
     if (user) {
-      if (user.role === "admin") {
-        alert('logged as an admin')
-        setTimeout(() => {
-          window.location.href = '../Html/adminHTML/dashboard.html';
-        }, 500); 
-      }
-      else {
-        alert('Login successful!');
-        setTimeout(() => {
-          window.location.href = '../Html/blogs.html';
-        }, 500); 
-      }
-      } 
-      else{
-        alert('Wrong password or email')
-      }
-  };
+        if (user.role === "admin") {
+            alert('logged as an admin');
+            setTimeout(() => {
+                window.location.href = '../Html/adminHTML/dashboard.html';
+            }, 500);
+        } else {
+            alert('Login successful!');
+            setTimeout(() => {
+                window.location.href = '../Html/blogs.html';
+            }, 500);
+
+            // Store the currently logged-in user's information in local storage
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+            // Update the select element with the logged-in user's name
+            const loginUser = JSON.parse(localStorage.getItem('loggedInUser')) ||[]
+            console.log(loginUser);
+            const loginUserName = document.getElementById("login-user-name");
+            loginUserName.innerText = `Logged in as ${loginUser.name}`; // Assuming user has a "name" property
+        }
+    } else {
+        alert('Wrong password or email');
+    }
+};
+
+
   
 
 

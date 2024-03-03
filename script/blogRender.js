@@ -46,27 +46,58 @@ for (let i = 0; i < blogs.length && i < 2; i++) {
 
 
 const likeBlogs = (el) => {
-  const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
-  const likedBlogs = JSON.parse(localStorage.getItem('likedBlogs')) || [];
+  // const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
+  // const likedBlogs = JSON.parse(localStorage.getItem('likedBlogs')) || [];
 
-  const blogIndex = blogs.findIndex(blog => blog.id === el.parentElement.id);
+  // const blogIndex = blogs.findIndex(blog => blog.id === el.parentElement.id);
 
-  if (blogIndex !== -1 && !likedBlogs.includes(blogs[blogIndex].id)) {
-      blogs[blogIndex].likes = (blogs[blogIndex].likes || 0) + 1;
+  // if (blogIndex !== -1 && !likedBlogs.includes(blogs[blogIndex].id)) {
+  //     blogs[blogIndex].likes = (blogs[blogIndex].likes || 0) + 1;
 
-      likedBlogs.push(blogs[blogIndex].id);
+  //     likedBlogs.push(blogs[blogIndex].id);
       
-      localStorage.setItem('blogData', JSON.stringify(blogs));
-      localStorage.setItem('likedBlogs', JSON.stringify(likedBlogs));
+  //     localStorage.setItem('blogData', JSON.stringify(blogs));
+  //     localStorage.setItem('likedBlogs', JSON.stringify(likedBlogs));
 
-      const likesSpan = document.getElementById('likes');
-      if (likesSpan) {
-          likesSpan.textContent = blogs[blogIndex].likes;
-      } else {
-          console.log('Likes span not found.');
-      }
-  } else {
-      console.log('Blog not found or already liked by the user.');
+  //     const likesSpan = document.getElementById('likes');
+  //     if (likesSpan) {
+  //         likesSpan.textContent = blogs[blogIndex].likes;
+  //     } else {
+  //         console.log('Likes span not found.');
+  //     }
+  // } else {
+  //     console.log('Blog not found or already liked by the user.');
+  // }
+  
+    alert('you need to log in to be allowed to like')
+    window.location.href = '../Html/signup.html';
+  
+};
+
+const loginUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
+const loginUserName = document.getElementById("login-user-name");
+loginUserName.innerText = `${loginUser.username}`; 
+console.log(loginUser);
+
+// log out the user
+
+const handleDropdownChange = () => {
+  const userDropdown = document.getElementById("user-dropdown");
+  
+  // Check if the selected option is the "Log Out" option
+  if (userDropdown.value === "users-logged") {
+      logout(); // Call the logout function if "Log Out" is selected
+  }
+};
+
+const logout = () => {
+  const loginUserName = document.getElementById("login-user-name");
+  // loginUserName.innerText = 'No User';
+
+  if (localStorage.removeItem('loggedInUser')) {
+    window.location.href = '../Html/index.html';
+  }else {
+    loginUserName.innerText = 'No User';
   }
 };
 

@@ -25,6 +25,7 @@
       scrollContainer.style.scrollBehavior ="smooth"
         scrollContainer.scrollLeft -=500;
     });
+    
    
 // adding the script for checking validation
 
