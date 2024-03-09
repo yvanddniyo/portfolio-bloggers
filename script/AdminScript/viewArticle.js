@@ -21,13 +21,14 @@ for (let i = 0; i < blogs.length && i < 6; i++) {
           <img src="${blog.image}" alt="blog">
       </div>
       <p>${blog.title}</p>
-         <span href="./viewBlog.html"><i class="fa-solid fa-eye"></i></span>
+       
         <span onclick ="editBlog(this)"><i class="fa-solid fa-pen"></i></span>
         <span onclick="deleteBlog(this)"><i class="fa-solid fa-trash"></i></span>
-  </div>
+     </div>
     `
     articleContainer.innerHTML += articleHTML
 }
+//  <span href="./viewBlog.html"><i class="fa-solid fa-eye"></i></span>
 })
 delete blog
 
@@ -99,7 +100,10 @@ const editBlog = (el) => {
     }
 };
 
-
+const closeForm= ()  => {
+    const form = document.getElementById('form');
+    form.style.display = 'none'; 
+}
 
 const updateBlog = () => {
     const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
@@ -159,7 +163,4 @@ const previewNewImage = (input) => {
     }
 };
 
-const closeForm= ()  => {
-    const form = document.getElementById('form');
-    form.style.display = 'none'; 
-}
+
