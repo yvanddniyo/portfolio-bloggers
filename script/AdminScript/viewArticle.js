@@ -112,6 +112,9 @@ const updateBlog = () => {
 
     // Update the existing blog with the edited content
     blogs[blogIndex].title = blogTitle.value;
+    blogs[blogIndex].description = tinymce.get('content').getContent();
+
+
 
     // Check if a new image is selected
     const newImageInput = document.getElementById('image');
