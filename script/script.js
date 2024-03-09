@@ -11,8 +11,6 @@
        navbars.classList.remove('active');
    });
 });
-
-
     const scrollContainer = document.querySelector(".my-project");
     const backBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
@@ -27,6 +25,7 @@
       scrollContainer.style.scrollBehavior ="smooth"
         scrollContainer.scrollLeft -=500;
     });
+    
    
 // adding the script for checking validation
 
@@ -107,6 +106,10 @@ const startTyping = () => {
     messageError.innerText = ""
   }
 }
+
+
+
+
 
 
 

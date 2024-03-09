@@ -154,7 +154,7 @@
     margin: 2rem 0px;
     border-radius: 12px; 
 }
-.buttons .reply{
+ .reply{
     margin: 1rem 12px 0px 0px;
     padding: 5px 12px;
     border: none;
@@ -175,6 +175,17 @@
     font-family: poppins;
     cursor: pointer;
 }
+.close{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: -5rem;
+    cursor: pointer;
+  }
+ .close-icon i{
+    font-size: 28px;
+ }
 
 /* ADDING ARTICLE STYLE */
 
@@ -418,12 +429,17 @@
 }
 #over-lapping {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
 }
 #adds {
     position: absolute;
-    top: 0;
-    left: 0;
+    top:20%;
+    left: 20%;
     right: 0;
+    bottom: -0%;
     z-index: 1;
 }
 .an-article span {
@@ -531,6 +547,21 @@
     color: #ffffff;
 }
 @media screen and (max-width: 950px) {
+    #over-lapping {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70%;
+    }
+    #adds {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        right: 0;
+        bottom: 50%;
+        z-index: 1;
+    }
     #view-blogs {
         padding: 1rem 20px;
     }

@@ -18,10 +18,8 @@ const saveLocalStorage = () => {
       reader.onload = function () {
         const imageDataURL = reader.result;
 
-        const specificDate = new Date(); 
-        const year = specificDate.getFullYear();
-        const month = specificDate.getMonth() + 1;
-        const day = specificDate.getDate();
+        const currentTimestamp = new Date().getTime(); 
+        const formattedTimestamp = new Date(currentTimestamp).toLocaleString();
 
         const newBlog = {
           id: `${blogTitle.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
@@ -30,9 +28,7 @@ const saveLocalStorage = () => {
           description: tinymce.get('content').getContent(),
           comment: 0,
           likes: 0,
-          year: year,
-          month: month,
-          day: day
+          date: formattedTimestamp
         };
 
         blogData.push(newBlog);

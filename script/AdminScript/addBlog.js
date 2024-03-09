@@ -1,19 +1,3 @@
-const hamburger = document.querySelector('.menus')
- const navbars = document.querySelector('.container-menu ')
-
- hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active')
-    navbars.classList.toggle('active')
- })
- document.querySelectorAll('.container-navbar-lists li').forEach(n => {
-   n.addEventListener('click', () => {
-       hamburger.classList.remove('active');
-       navbars.classList.remove('active');
-   });
-});
-
-// add blog js validation
-
 const titleInput = document.getElementById('title')
 const imageInput = document.getElementById('image')
 const textAreaInput = document.getElementById('content')
@@ -53,22 +37,3 @@ form.addEventListener('submit', (e) => {
    textAreaError.value = ''
  } 
 })
-
-
-
-const commentForm = document.getElementById('comments');
-const inputValue = document.getElementById('client-name'); 
-const  nameError = document.getElementById('text-error')
-const  contentInput = document.getElementById('content')
-const  contentError = document.getElementById('word-needed')
-
-commentForm.addEventListener('submit', (e) => {
-   if(inputValue.value === '' || contentInput === null) {
-       e.preventDefault();
-       nameError.innerText = "your name"
-   }
-})
-
-
-
-

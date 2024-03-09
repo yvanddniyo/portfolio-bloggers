@@ -272,7 +272,7 @@ a li ul{
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url('./assets/code-1076536_1920.jpg');
+    background-image: url('../assets/code-1076536_1920.jpg');
     background-repeat: none;
     background-size: cover;
     background-position: center;
@@ -390,7 +390,7 @@ a li ul{
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url('./assets/programming-language-jobs.png');
+    background-image: url('../assets/programming-language-jobs.png');
     background-repeat: none;
     background-size: cover;
     background-position: center;
@@ -565,11 +565,16 @@ a li ul{
     align-items: center;
     /* gap: 2rem; */
 }
-.likes-comments  p{
-    font-size: 15px;
+.likes-comments  button{
+    font-size: 17px;
+    border: none;
+    background: none;
+    color: #18e614;
+    cursor: pointer;
+    padding-left: 4px;
 }
 .likes-comments span {
-    font-size: 17px;
+    font-size: 1px;
 }
 .comments {
     font-size: 13px;
@@ -802,7 +807,7 @@ a li ul{
     margin: 2rem 0px 1rem 0px;
   }
   .leave-a-comment input {
-    width: 40%;
+    width: 90%;
     padding: 0.6rem 14px;
     outline: none;
     border-radius: 5px;
@@ -834,7 +839,7 @@ a li ul{
 
   /* // usercomment */
 
-  .comments {
+  .form {
     width: 100%;
     
     margin: 1rem 0px;
@@ -851,6 +856,7 @@ a li ul{
 }
  .date{
     font-size: 10px;
+    color: #22E742;
 }
 .user-comments p{
     width: 60%;
@@ -869,9 +875,48 @@ a li ul{
   .more-info span:hover{
     color: #189780;
   }
+
+  /* message from the client */
+  .message-clients {
+    width: 100%;
+    background-color: white;
+  }
+  .message-clients p{
+    width: 60%;
+    background-color: white;
+  }
+
+  /* Logeed in user in the page */
+  .login-user {
+    margin-top: -0.2rem;
+    outline: none;
+    border: 0.3px solid #11110F;
+    font-family: poppins;
+    padding: 0.5em 0.7rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #18e614;
+     display: flex;
+     align-items: center;
+     background:#11110F;
+  }
+ 
+  .login-user option {
+    border-radius: 20px;
+  }
+  #user-logout {
+  color:#D22D2D;
+  }
+  /* .close */
+  
+ 
   
 
 @media screen and (max-width: 993px) {
+    .message-clients h2{
+     font-size: 14px;
+    }
     .comment-user {
         margin-top: 10px;
     }
@@ -923,6 +968,7 @@ a li ul{
         display: flex;
         align-items: center;
     }
+
    
     .chevron-right .chevron-left {
         width: 30px;

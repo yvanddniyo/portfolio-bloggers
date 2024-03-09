@@ -159,26 +159,3 @@
 // </html> -->
 
 
-const getPrimeNum =(num) =>{
-	if (num < 2) {
-		return false
-	}
-	for (let i = 2; i <= Math.sqrt(num); i++) {
-		if (num % i === 0) {
-			return false
-		}
-	}
-	return true
-}
-
-// const arraysPrime = (arr) => {
-// 	let result = []
-// 	for (let i = 0; i < arr.length; i++) {
-// 		if (getPrimeNum(arr[i])) {
-// 			result.push(arr[i])
-// 		}
-// 	} 
-// 	return result;
-// }
-// const arrray = [1,2,3,4,5,7,8,9]
-// console.log(arraysPrime(arrray));
