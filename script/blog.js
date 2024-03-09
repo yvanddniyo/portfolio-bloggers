@@ -70,12 +70,8 @@ const likeBlogs = (el, blogId, userId) => {
     const likesSpan = document.getElementById(`likes_${blogId}`);
     if (likesSpan) {
       likesSpan.textContent = blogs[blogIndex].likes;
-    } else {
-      console.log(`Likes span not found for blog ${blogId}.`);
-    }
-  } else {
-    console.log(`Blog with ID ${blogId} not found.`);
-  }
+    } 
+  } 
 };
 
 

@@ -39,36 +39,12 @@ for (let i = 0; i < blogs.length && i < 2; i++) {
                 </div>
         </div>
     `
-    // console.log(blog.id);
     blogContainer.innerHTML += blogHTML 
 }
 })
 
 
 const likeBlogs = (el) => {
-  // const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
-  // const likedBlogs = JSON.parse(localStorage.getItem('likedBlogs')) || [];
-
-  // const blogIndex = blogs.findIndex(blog => blog.id === el.parentElement.id);
-
-  // if (blogIndex !== -1 && !likedBlogs.includes(blogs[blogIndex].id)) {
-  //     blogs[blogIndex].likes = (blogs[blogIndex].likes || 0) + 1;
-
-  //     likedBlogs.push(blogs[blogIndex].id);
-      
-  //     localStorage.setItem('blogData', JSON.stringify(blogs));
-  //     localStorage.setItem('likedBlogs', JSON.stringify(likedBlogs));
-
-  //     const likesSpan = document.getElementById('likes');
-  //     if (likesSpan) {
-  //         likesSpan.textContent = blogs[blogIndex].likes;
-  //     } else {
-  //         console.log('Likes span not found.');
-  //     }
-  // } else {
-  //     console.log('Blog not found or already liked by the user.');
-  // }
-  
     alert('you need to log in to be allowed to like')
     window.location.href = '../Html/signup.html';
   
@@ -92,7 +68,6 @@ const handleDropdownChange = () => {
 
 const logout = () => {
   const loginUserName = document.getElementById("login-user-name");
-  // loginUserName.innerText = 'No User';
 
   if (localStorage.removeItem('loggedInUser')) {
     window.location.href = '../Html/index.html';

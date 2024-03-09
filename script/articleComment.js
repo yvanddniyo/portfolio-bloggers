@@ -11,7 +11,6 @@ const messageErrors = document.querySelector('.message-err');
 commentsContainer.addEventListener('submit', (e) => {
     if (usernameInput.value === "" || usernameInput.value === null) {
         e.preventDefault();
-        // if (nameErrors) {
             nameErrors.innerText = "Please fill in the name and content.";
         
             nameErrors.innerText = "";
@@ -26,6 +25,7 @@ commentsContainer.addEventListener('submit', (e) => {
             messageErrors.innerText = "Please fill in the name and content.";
        
         } else {
+            textareainput.value ="";
             sectionComment.value = '';
             messageErrors.innerText = "";
     }
