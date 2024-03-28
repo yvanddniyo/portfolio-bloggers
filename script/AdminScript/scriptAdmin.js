@@ -28,47 +28,62 @@ const  contentError = document.getElementById('word-needed')
 
 // adding message from clients
 
-const messageContainer = document.getElementById('message-container')
-document.addEventListener('DOMContentLoaded', () => {
-messageContainer.innerHTML = "";
-const message = JSON.parse(localStorage.getItem('messages')) || [];
-console.log(message);
+const messageContainer = document.getElementById('message-container');
+const messageDelete = document.getElementById('message-delete')
+const msgLength = document.getElementById('msg')
+const getLoader = document.getElementById("loader");
+let messageId;
+document.addEventListener('DOMContentLoaded', async () => {
+  messageContainer.innerHTML = "";
+  getLoader.style.display = "block";
+  await fetch('https://be-portofolio-bloger-2.onrender.com/api/v1/queries', {})
+    .then(res => res.json())
+    .then(messages => {
+      getLoader.style.display = "none";
+      messages.forEach(message => {
+        messageId = message._id;
+        const messageHTML = `
+          <div class="message-clients" id="${message._id}">
+            <h2 style="font-size: 17px;">${message.name}</h2>
+            <h6 style="margin:10px 0; color: #456;">Email: ${message.email}</h6>
+            <p style="font-size: 14px; width:200px; cursor:"pointer">${message.message} 
+            </p>
+           
+            <button class="reply">Reply</button>
+            <button class="delete" onclick="deleteMessage('${message._id}', this.parentNode)">Delete</button>
+          </div>
+        `;
+        msgLength.textContent = `(${messages.length})`
+        messageContainer.innerHTML += messageHTML;
+      });
+    });
+});
 
+const deleteMessage = async (messageId, messageElement) => {
+  await fetch(`https://be-portofolio-bloger-2.onrender.com/api/v1/queries/${messageId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => {
+      console.log(res);
+      if (res.ok) {
+        messageDelete.textContent = 'message successful deleted'
+        messageElement.remove(); 
+        messageDelete.style.color = "#17cf51"
 
-
-for (let i = 0; i < message.length && i < 7; i++) {
-  const msg= message[i];
-  // console.log(msg.id)
-      const messageHTML =`
-      <div class="message-clients" id="${msg.id}">
-      <h2 style="font-size: 17px;">${msg.name}</h2>
-      <h6 style="margin:10px 0; color: #456;">Email: ${msg.email}</h6>
-      <p style="font-size: 14px; width:200px">${msg.message}</p>
-      
-          <button class="reply">Reply</button>
-          <button class="delete" onclick="deleteMessage(this)">Delete</button>
-      
-  </div>
-    `
-    // console.log(blog.id);
-   messageContainer.innerHTML += messageHTML 
-}
-})
-
-
-const deleteMessage = (el) => {
-  const message = JSON.parse(localStorage.getItem('messages')) || [];
-  if (el.parentElement) {
-      const msgId = el.parentElement.id;
-      const messageIndex = message.findIndex(item => item.id === msgId);
-      console.log(messageIndex);
-      message.splice(messageIndex, 1);
-      localStorage.setItem('messages', JSON.stringify(message));
-      el.parentElement.remove();
-  } else {
-      console.error("Parent element is undefined");
-  }
-}
+        setInterval(() => {
+          messageDelete.textContent= ''
+        }, 5000);
+      } else {
+        console.log('delete goes wrong');
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting message:', error);
+    });
+};
 
 
 
