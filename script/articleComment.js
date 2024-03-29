@@ -45,7 +45,23 @@ window.addEventListener('DOMContentLoaded', () => {
         <p>web developer Job</p>
         <p>Full-stack development</p>
     </div>
+    <form id="form"class="leave-a-comment" onsubmit="return addComments()">
+    <h4>Leave a comment</h4>
+    <div class="your-name">
+        <input type="text" placeholder="Your name" id="client-name"><br>
+        <span class="text-error" style="font-size: 13px; color: brown;"></span>
+    </div>
+    <textarea name="content" id="message" cols="30" rows="10"
+    placeholder="Leave us a comment" ></textarea><br>
+    <span class="message-err" style="font-size: 13px; color: brown;"></span>
+    <span id="word-needed"></span><br>
+    <button id="send" type="submit"
+    onclick="addComments(blogId)">
+        Comment
+    </button>
+ </form>
         `
+            
     
         })
         .catch(error => {

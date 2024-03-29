@@ -78,12 +78,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 const blogContainer = document.getElementById('blog-container')
 const getLoader = document.getElementById("loader")
+// const BlogCount =  document.getElementById("blogs")
 blogContainer.innerHTML = "";
 
 let startBlog = 0;
-let endBlog = 2
+let endBlog = 2;
 
-getLoader.style.display = "block"
+getLoader.style.display = "block";
 
 fetch('https://be-portofolio-bloger-2.onrender.com/api/v1/blogs')
   .then(response => {
@@ -94,11 +95,13 @@ fetch('https://be-portofolio-bloger-2.onrender.com/api/v1/blogs')
   })
   .then(blogs => {
     console.log(blogs);
+
     getLoader.style.display = "none"
+
     const blogLimit = blogs.slice(startBlog, endBlog)
     blogLimit.forEach( blog => {
+
     const blogId = blog._id
-     console.log(blogId);
       const blogHTML =`
     <div class="line-btn"></div>
     <div class="photo-container-blog">
@@ -130,12 +133,12 @@ fetch('https://be-portofolio-bloger-2.onrender.com/api/v1/blogs')
     `
     blogContainer.innerHTML += blogHTML 
     })
-    // }
   })
   .catch(error => {
     console.error('Error fetching data:', error);
   }); 
 })
+
 
  
     

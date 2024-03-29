@@ -8,48 +8,64 @@ const passwordError = document.getElementById('password-error')
 const confirmPassword = document.getElementById('confirm-password')
 const confirmPasswordError = document.getElementById('confirm-password-error')
 const equalPasswordError = document.getElementById('equal-password-error')
+const signup = document.getElementById('sign-up')
 
+const signUpButton = document.getElementById('send');
 
-// signup functionality
-// form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
+   e.preventDefault();
+   usernameInputs = usernameInput.value;
+   emailInputs = emailInput.value;
+   const userObj = {
+     username: usernameInputs,
+     email: emailInputs,
+     password: passwordInput.value
+   };
 
-//    const signup =(e) => {
-//      let signForm = {
-//       username : usernameInput.value,
-//       email : emailInput.value,
-//       passwordInput : passwordInput.value,
-//       confirmPassword: confirmPassword.value
-//      }
-//       localStorage('signForm', JSON.stringify(signForm))
-//      console.log(signForm)
-//      e.preventDefault()
-//    }
-// })
-
-const  signUp = () => {
-//  e.preventDefault()
-   const username = document.getElementById("username").value;
-   const email = document.getElementById("email").value;
-   const password = document.getElementById("password").value;
-   const ConfirmPassword = document.getElementById("confirm-password").value;
-
-   const users =  JSON.parse(localStorage.getItem('users'))||[]
-   // const role = document.getElementById("role").value;
-
-
-   let userObj ={
-      username,
-      email,
-      password,
-      ConfirmPassword,
-      role: 'user'
+   signUpButton.textContent = 'Loading...';
+   signUpButton.disabled = true;
+ 
+   const uri = 'http://localhost:5000/api/v1/auth/register';
+   try {
+     const response = await fetch(uri, {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(userObj)
+     });
+ 
+     if (response.ok) {
+       showPopup('Your account was successfully created.', '#white', './login.html');
+     } else {
+       showPopup('Your account failed to create or the email is already in use.', '#F48B2A');
+     }
+   } catch (error) {
+     showPopup('An error occurred. Please try again.', '#F48B2A');
+   } finally {
+   
+     signUpButton.textContent = 'Sign Up';
+     signUpButton.disabled = false;
    }
-    
-   if (email === "nyvan1@gmail.com") {
-      userObj.role = "admin";
-  }
-   users.push(userObj)
-   localStorage.setItem('users', JSON.stringify(users))
+ });
+
+ const showPopup = (message, color, redirectUrl=null) => {
+   const popupContainer = document.getElementById('popup-container');
+   const popupMessage = document.getElementById('popup-message');
+   const popupOk = document.getElementById('popup-ok');
+   console.log(popupOk)
+   popupMessage.textContent = message;
+   popupMessage.style.color = color;
+   popupContainer.style.display = 'block';
+ 
+   popupOk.addEventListener('click', (e) => {
+      e.preventDefault()
+     popupContainer.style.display = 'none';
+
+     if(redirectUrl) {
+      window.location.href = redirectUrl;
+     }
+   });
  }
 
 form.addEventListener('submit', (e) => {
@@ -123,6 +139,7 @@ const startTyping = () => {
 const passwordField = document.getElementById('password');
 const confirmPasswords = document.getElementById('confirm-password');
 const showPass = document.getElementById('show-password');
+let removeConf;
 
 // CHECKING IF PASSWORDS ARE SAME
 
@@ -135,9 +152,13 @@ const checkSamePassword = () =>  {
    }
    else {
       document.getElementById('create-same-pass').style.color = 'green';
-      document.getElementById('create-same-pass').innerHTML = 'Relax, password are same';
+     removeConf = document.getElementById('create-same-pass').innerHTML = 'Relax, password are same';
       document.getElementById('send').style.disable = 'false';
-      document.getElementById('send').style.opacity = '1'; 
+      document.getElementById('send').style.opacity = '1';
+      
+   }
+   if (removeConf) {
+      document.getElementById('create-same-pass').innerHTML = '';
    }
 }
 

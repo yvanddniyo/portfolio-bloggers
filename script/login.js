@@ -2,8 +2,89 @@ const emailInput = document.getElementById('email')
 const emailError = document.getElementById('email-error')
 const passwordInput = document.getElementById('password')
 const passwordError = document.getElementById('password-error')
-const form = document.getElementById('form')
+const form = document.getElementById("form")
+const messageLogin = document.getElementById('login-user')
 
+const signup = document.getElementById('sign-up')
+const signUpButton = document.getElementById('send');
+let tokenDecode;
+
+form.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    const emailInputs = emailInput.value;
+    const passwordInputs = passwordInput.value;
+
+    const loginObj = {
+      email: emailInputs,
+      password: passwordInputs
+    };
+
+   signUpButton.textContent = 'Loading...';
+   signUpButton.disabled = true;
+ 
+   const uri = 'http://localhost:5000/api/v1/auth/login';
+   try {
+     const response = await fetch(uri, {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(loginObj)
+     });
+ 
+     if (response.ok) {
+        const data = await response.json()
+         const token = data.token
+         tokenDecode = token
+         const decodedToken = decodeJWT(tokenDecode)
+         const userRole = decodedToken.payload.role;
+         localStorage.setItem('auth-token', token)
+         if (userRole === 'user') {
+         showPopup(
+         'Your successfully logged in.', '#white', './blogs.html'
+         );
+        } 
+        else if (userRole === 'admin') {
+            showPopup(
+                'Your successfully logged as Admin.', '#white', './adminHTML/dashboard.html'
+            );
+        }
+     } 
+     else {
+       showPopup('Hmm... Incorrect email or password .', '#F48B2A');
+     }
+   } catch (error) {
+     showPopup('An error occurred. Please try again.', '#F48B2A');
+   } finally {
+   
+     signUpButton.textContent = 'Log In';
+     signUpButton.disabled = false;
+   }
+ });
+
+  const showPopup = (message, color, redirectUrl=null) => {
+    const popupContainer = document.getElementById('popup-container');
+    const popupMessage = document.getElementById('popup-message');
+    const popupOk = document.getElementById('popup-ok');
+    console.log(popupOk)
+    popupMessage.textContent = message;
+    popupMessage.style.color = color;
+    popupContainer.style.display = 'block';
+  
+    popupOk.addEventListener('click', (e) => {
+       e.preventDefault()
+      popupContainer.style.display = 'none';
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
+      }
+    });
+  }
+
+ const  decodeJWT = (token) => {
+    const parts = token.split('.');
+    const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
+    return { payload };
+}
 
 form.addEventListener('submit', (e) => {
     const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
@@ -37,44 +118,6 @@ const startTyping = () => {
   }
 
   //  Login sessions
-
-  const login = () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-
-    const user = storedUsers.find(u => u.email === email && u.password === password);
-
-    if (user) {
-        if (user.role === "admin") {
-            alert('logged as an admin');
-            setTimeout(() => {
-                window.location.href = '../Html/adminHTML/dashboard.html';
-            }, 500);
-        } else {
-            alert('Login successful!');
-            setTimeout(() => {
-                window.location.href = '../Html/blogs.html';
-            }, 500);
-
-            // Store the currently logged-in user's information in local storage
-            localStorage.setItem('loggedInUser', JSON.stringify(user));
-
-            // Update the select element with the logged-in user's name
-            const loginUser = JSON.parse(localStorage.getItem('loggedInUser')) ||[]
-            console.log(loginUser);
-            const loginUserName = document.getElementById("login-user-name");
-            loginUserName.innerText = `Logged in as ${loginUser.name}`; // Assuming user has a "name" property
-        }
-    } else {
-        alert('Wrong password or email');
-    }
-};
-
-
-  
-
 
 
   // SHOW OR HIDE PASSWORD

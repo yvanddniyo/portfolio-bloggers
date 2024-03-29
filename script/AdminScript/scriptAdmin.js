@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         msgLength.textContent = `(${messages.length})`
         messageContainer.innerHTML += messageHTML;
       });
+      
     });
 });
 
