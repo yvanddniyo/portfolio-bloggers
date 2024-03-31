@@ -22,7 +22,7 @@ form.addEventListener('submit', async(e) => {
    signUpButton.textContent = 'Loading...';
    signUpButton.disabled = true;
  
-   const uri = 'http://localhost:5000/api/v1/auth/login';
+   const uri = 'https://be-portofolio-bloger-2.onrender.com/api/v1/auth/login';
    try {
      const response = await fetch(uri, {
        method: 'POST',
@@ -62,6 +62,7 @@ form.addEventListener('submit', async(e) => {
    }
  });
 
+ 
   const showPopup = (message, color, redirectUrl=null) => {
     const popupContainer = document.getElementById('popup-container');
     const popupMessage = document.getElementById('popup-message');

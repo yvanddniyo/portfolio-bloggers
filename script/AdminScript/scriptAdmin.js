@@ -1,32 +1,25 @@
 const hamburger = document.querySelector('.menus')
- const navbars = document.querySelector('.container-menu ')
+const navbars = document.querySelector('.container-menu ')
 
- hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active')
-    navbars.classList.toggle('active')
- })
- document.querySelectorAll('.container-navbar-lists li').forEach(n => {
-   n.addEventListener('click', () => {
-       hamburger.classList.remove('active');
-       navbars.classList.remove('active');
-   });
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active')
+  navbars.classList.toggle('active')
+})
+document.querySelectorAll('.container-navbar-lists li').forEach(n => {
+  n.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navbars.classList.remove('active');
+  });
 });
 
 // add blog js validation
 const commentForm = document.getElementById('comments');
-const inputValue = document.getElementById('client-name'); 
-const  nameError = document.getElementById('text-error')
-const  contentInput = document.getElementById('content')
-const  contentError = document.getElementById('word-needed')
+const inputValue = document.getElementById('client-name');
+const nameError = document.getElementById('text-error')
+const contentInput = document.getElementById('content')
+const contentError = document.getElementById('word-needed')
 
-// commentForm.addEventListener('submit', (e) => {
-//    if(inputValue.value === '' || contentInput === null) {
-//        e.preventDefault();
-//        nameError.innerText = "your name"
-//    }
-// })
 
-// adding message from clients
 
 const messageContainer = document.getElementById('message-container');
 const messageDelete = document.getElementById('message-delete')
@@ -56,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         msgLength.textContent = `(${messages.length})`
         messageContainer.innerHTML += messageHTML;
       });
-      
+
     });
 });
 
@@ -71,11 +64,11 @@ const deleteMessage = async (messageId, messageElement) => {
       console.log(res);
       if (res.ok) {
         messageDelete.textContent = 'message successful deleted'
-        messageElement.remove(); 
+        messageElement.remove();
         messageDelete.style.color = "#17cf51"
 
         setInterval(() => {
-          messageDelete.textContent= ''
+          messageDelete.textContent = ''
         }, 5000);
       } else {
         console.log('delete goes wrong');

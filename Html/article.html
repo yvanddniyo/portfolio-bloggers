@@ -16,7 +16,7 @@
             <div class="container-navbar">
                 <ul class="container-navbar-lists">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href=".././index.html">Home</a>
                     </li>
                     <li>
                         <a href="">About me</a>
@@ -36,6 +36,10 @@
                     <li class="login">
                         <a href="../Html/login.html">LogIn</a>
                     </li>
+                    <select class="login-user" id="user-dropdown" onchange="handleLogOut(this)">
+                        <option id="user-option" value="user"></option>
+                        <option value="logout">Log Out</option>
+                    </select>
                 </ul>
             </div>
             <div class="menus">
@@ -50,23 +54,24 @@
             <div id="container" class="container-loader">
                 <div id="loader" class="loader"></div>
             </div>
-              <div class="" id="main-article"></div>
-
-                <!-- <form id="form"class="leave-a-comment" onsubmit="return addComments()">
-                    <h4>Leave a comment</h4>
-                    <div class="your-name">
-                        <input type="text" placeholder="Your name" id="client-name"><br>
-                        <span class="text-error" style="font-size: 13px; color: brown;"></span>
+            <div id="popup-container" style="display:none;">
+                <div class="content">
+                    <div id="popup-message"></div>
+                    <div class="pop-up">
+                      <button id="popup-ok">OK</button>
                     </div>
-                    <textarea name="content" id="message" cols="30" rows="10"
-                    placeholder="Leave us a comment" ></textarea><br>
+                </div>
+              </div>
+              <div class="" id="main-article"></div>
+                
+                 <!-- <form id="form" class="leave-a-comment">
+                    <h4>Leave a comment</h4>
+                    <textarea name="content" id="message" cols="30" rows="10" placeholder="Leave us a comment"></textarea><br>
                     <span class="message-err" style="font-size: 13px; color: brown;"></span>
                     <span id="word-needed"></span><br>
-                    <button id="send" type="submit"
-                    onclick="addComments(blogId)">
-                        Comment
-                    </button>
-                 </form> -->
+                    <button id="send" type="submit">Comment</button>
+                </form> -->
+
                 <div class="comments-container" id="comment-section"></div> 
                 <div class="view-more-blog">
                     <a href="#"> More Comments </a>

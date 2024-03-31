@@ -25,7 +25,7 @@ form.addEventListener('submit', async (e) => {
    signUpButton.textContent = 'Loading...';
    signUpButton.disabled = true;
  
-   const uri = 'http://localhost:5000/api/v1/auth/register';
+   const uri = 'https://be-portofolio-bloger-2.onrender.com/api/v1/auth/register';
    try {
      const response = await fetch(uri, {
        method: 'POST',

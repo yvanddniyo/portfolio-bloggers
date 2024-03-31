@@ -16,7 +16,7 @@
             <div class="container-navbar">
                 <ul class="container-navbar-lists">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="./index.html">Home</a>
                     </li>
                     <li>
                         <a href="">About me</a>
@@ -36,9 +36,9 @@
                     <li class="login">
                         <a href="./login.html">LogIn</a>
                     </li>
-                    <select class="login-user" id="user-dropdown" onchange="handleDropdownChange()">
-                        <option id="login-user-name" value="users-logged"></option>
-                        <option id="user-logout" value="users-logged">Log Out</option>
+                    <select class="login-user" id="user-dropdown" onchange="handleLogOut(this)">
+                        <option id="user-option" value="user"></option>
+                        <option value="logout">Log Out</option>
                     </select>
                 </ul>
             </div>
