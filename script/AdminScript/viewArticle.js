@@ -11,23 +11,7 @@ const blogLoader = document.getElementById("loader");
 console.log(blogLoader);
 
 
-const showPopup = (message, color, callback) => {
-    const popupContainer = document.getElementById("popup-container");
-    const popupMessage = document.getElementById("popup-message");
-    const popupOk = document.getElementById("popup-ok");
-    popupMessage.textContent = message;
-    popupMessage.style.color = color;
-    popupContainer.style.display = "block";
 
-    popupOk.addEventListener("click", async (e) => {
-        e.preventDefault();
-        popupContainer.style.display = "none";
-
-        if (callback && typeof callback === 'function') {
-            await callback();
-        }
-    });
-};
 
 
 blogLoader.style.display = "block";
@@ -59,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <img src="${blog.image}" alt="blog">
                     </div>
                     <p>${blog.title}</p>
-                    <span onclick="editBlog(this)">
+                    <span onclick="handleEditButtonClick(this)">
                       <i class="fa-solid fa-pen"></i>
                     </span>
                     <span onclick="deleteBlog(this)">
@@ -105,6 +89,17 @@ const deleteBlog = async (element) => {
 
 
 
+const toggleEditForm = () => {
+    FormAdd.classList.toggle('pop-edit');
+};
+
+const openEditForm = () => {
+    FormAdd.classList.add('pop-edit');
+};
+const closeEditForm = () => {
+    FormAdd.classList.remove('pop-edit');
+};
+
 const editBlog = async (element) => {
     try {
         if (!element || !element.parentNode) {
@@ -112,10 +107,10 @@ const editBlog = async (element) => {
             return;
         }
 
+        openEditForm();
+
         const blogId = element.parentNode.id;
         const updateUrl = `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${blogId}`;
-
-        console.log(blogId);
 
         const response = await fetch(updateUrl, {
             method: 'GET',
@@ -124,31 +119,27 @@ const editBlog = async (element) => {
                 'auth-token': token
             }
         });
+        blogSave.innerText = "Update Blog";
 
         if (!response.ok) {
             throw new Error('Failed to fetch the blog data');
         }
 
         const blog = await response.json();
-
         blogTitle.value = blog.title;
+        blogImage.file = blog.image;
         tinymce.get('content').setContent(blog.content);
-        FormAdd.style.display = 'block';
 
         FormAdd.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             const titleInputs = blogTitle.value;
+            const blogImages = blogImage.file[0];
             const textDescriptions = tinymce.get('content').getContent();
             const formData = new FormData();
-
             formData.append('title', titleInputs);
+            formData.append('image', blogImages)
             formData.append('content', textDescriptions);
-
-            // Check if new image file is selected
-            if (blogImage.files.length > 0) {
-                formData.append('image', blogImage.files[0]);
-            }
 
             blogSave.textContent = "Updating...";
 
@@ -165,137 +156,27 @@ const editBlog = async (element) => {
             }
 
             showPopup('Blog updated successfully', '#4CAF50', () => {
-                // window.location.reload();
             });
+            blogSave.innerText = "Update Blog";
+            blogSave.disabled = false;
         });
 
     } catch (error) {
         console.error('Error fetching or updating the blog:', error);
         showPopup('An error occurred. Please try again later.', '#F44336');
     }
-
-    blogSave.innerText = "Update Blog";
-    return FormAdd.classList.toggle('pop-edit');
 };
 
-
-// delete blog
-
-// const deleteBlog = (el) => {
-//     const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
-//     if (el.parentElement) {
-//         const blogId = el.parentElement.id;
-//         const blogIndex = blogs.findIndex(item => item.id === blogId);
-//         console.log(blogIndex);
-//         blogs.splice(blogIndex, 1);
-//         localStorage.setItem('blogData', JSON.stringify(blogs));
-//         el.parentElement.remove();
-//     } else {
-//         console.error("Parent element is undefined");
-//     }
-// }
-// edit the blog
-
-// let currentTask = {};
-
-// ...
-
-// const editBlog = (el) => {
-//     const blogs = JSON.parse(localStorage.getItem('blogData')) || '';
-
-//     if (el.parentElement) {
-//         const blogId = el.parentElement.id;
-//         const blogIndex = blogs.findIndex(item => item.id === blogId);
-
-//         currentTask = blogs[blogIndex];
-//         // console.log(currentTask);
-//         let contents = currentTask.description;
-
-//         blogTitle.value = currentTask.title;
-
-//         const currentImagePreview = document.getElementById('currentImagePreview');
-//         currentImagePreview.src = currentTask.image;
-//         currentImagePreview.style.display = 'block';
-
-//         const blogImage = document.getElementById('image');
-//         blogImage.src = currentTask.image;
-
-//         // Set the content of the TinyMCE editor
-//         tinymce.activeEditor.setContent(contents);
-
-//         // Show the new image input element and reset its value
-//         const newImageInput = document.getElementById('image');
-//         const updatedImage = document.getElementById('updated-img');
-//         const currentImage = document.getElementById('current-img');
-//         updatedImage.innerText = 'Updated Image';
-//         updatedImage.style.color = 'green';
-//         updatedImage.style.fontSize = '13px';
-//         currentImage.innerText = 'Current Image';
-//         currentImage.style.fontSize = '13px';
-//         newImageInput.style.display = 'block';
-//         newImageInput.value = '';
-
-//         // Hide the new image preview initially
-//         const newImagePreview = document.getElementById('newImagePreview');
-//         newImagePreview.style.display = 'none';
-
-//         saveBlog.innerText = 'Update Blog';
-//         FormAdd.classList.toggle('pop-edit');
-
-//         // Check if a new image is already selected and preview it
-//         if (newImageInput.files.length > 0) {
-//             previewNewImage(newImageInput);
-//         }
-//     }
-// };
+const handleEditButtonClick = (element) => {
+    editBlog(element);
+    toggleEditForm();
+};
 
 const closeForm = () => {
     const form = document.getElementById('form');
     form.style.display = 'none';
 }
 
-// const updateBlog = () => {
-//     const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
-//     const blogId = currentTask.id;
-//     const blogIndex = blogs.findIndex(item => item.id === blogId);
-
-//     // Update the existing blog with the edited content
-//     blogs[blogIndex].title = blogTitle.value;
-//     blogs[blogIndex].description = tinymce.get('content').getContent();
-
-
-
-//     // Check if a new image is selected
-//     const newImageInput = document.getElementById('image');
-//     const newImagePreview = document.getElementById('newImagePreview');
-
-//     if (newImageInput.files.length > 0) {
-//         const selectedImage = newImageInput.files[0];
-//         const reader = new FileReader();
-
-//         reader.readAsDataURL(selectedImage);
-
-//         reader.onload = function () {
-//             const imageDataURL = reader.result;
-
-//             // Show the preview of the new image
-//             newImagePreview.src = imageDataURL;
-//             newImagePreview.style.display = 'block';
-
-//             blogs[blogIndex].image = imageDataURL;
-
-//             // Save the updated blogData to localStorage
-//             localStorage.setItem('blogData', JSON.stringify(blogs));
-
-
-//             alert('Blog updated successfully');
-//         };
-//     } else {
-//         localStorage.setItem('blogData', JSON.stringify(blogs));
-//         alert('Blog updated successfully');
-//     }
-// };
-// Add this function to your script
 const previewNewImage = (input) => {
     const newImagePreview = document.getElementById('newImagePreview');
 
@@ -303,16 +184,15 @@ const previewNewImage = (input) => {
         const reader = new FileReader();
 
         reader.onload = function (e) {
-            // Show the preview of the selected new image
             newImagePreview.src = e.target.result;
             newImagePreview.style.display = 'block';
         };
 
         reader.readAsDataURL(input.files[0]);
     } else {
-        // Hide the new image preview if no file is selected
         newImagePreview.style.display = 'none';
     }
 };
+
 
 

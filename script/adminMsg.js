@@ -59,6 +59,9 @@ forms.addEventListener('submit', (event) => {
     });
 });
 
+/* Render number of blog on the admin dashboard */
+
+
 
 
 

@@ -45,6 +45,7 @@
         <div class="content">
             <div id="popup-message"></div>
             <div class="pop-up">
+              <button id="popup-no">NO</button>
               <button id="popup-ok">OK</button>
             </div>
         </div>
@@ -63,10 +64,7 @@
                <div class="choose-image">
                   <label for="none">Image*</label>
                   <input id="image" type="file" placeholder="Your blog title" accept="image*/" onchange="previewNewImage(this)">
-                  <p id="current-img"></p>
-                  <img style="width: 30%; padding-top:10px;" id="currentImagePreview" alt="Current Blog Image">
-                  <img style="width: 30%; padding-top:10px;" id="newImagePreview" alt="New Blog Image" style="display: none;">
-                  <p id="updated-img"></p>
+                  <img style="width: 30%; padding-top:10px; margin: 0rem 3rem;" id="newImagePreview" style="display: none;">
                   <span id="image-error" class="errors"></span>
                </div>
                <div class="description">

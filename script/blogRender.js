@@ -77,9 +77,11 @@
 // };
 document.addEventListener("DOMContentLoaded", () => {
   const blogContainer = document.getElementById('blog-container');
+  const blogCount = document.getElementById('blogs-count')
   const getLoader = document.getElementById("loader");
   blogContainer.innerHTML = "";
 
+  console.log(blogCount)
   let startBlog = 0;
   let endBlog = 2;
 
@@ -93,14 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then(async blogs => {
-      console.log(blogs);
 
       getLoader.style.display = "none";
 
       for (let i = startBlog; i < endBlog; i++) {
         const blog = blogs[i];
         const blogId = blog._id;
-
         const commentCount = await fetchCommentCount(blogId);
         const likeCount = await fetchLikeCount(blogId);
 
@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error('Error fetching data:', error);
     });
 })
-
 
 const fetchCommentCount = async (blogId) => {
   try {
@@ -197,7 +196,7 @@ const handleLogOut = (selectElement) => {
     if (token) {
       userOption.textContent = userRole;
     } else {
-      userOption.textContent = "No logged";
+      userOption.textContent = "No username";
     }
   }
 }
@@ -207,11 +206,8 @@ const userOption = document.getElementById('user-option');
 if (token) {
   userOption.textContent = userRole;
 } else {
-  userOption.textContent = "No logged";
+  userOption.textContent = "No username";
 }
-
-
-
 
 
 

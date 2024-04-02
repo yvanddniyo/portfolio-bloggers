@@ -58,6 +58,8 @@ const likeBlog = async () => {
         "auth-token": token,
       },
     });
+    const userIdLike = decodeJWT(token).payload.id
+    console.log(userIdLike)
     if (response.ok) {
       const updatedResponse = await fetch(urlLike);
       const updatedData = await updatedResponse.json();
@@ -66,18 +68,14 @@ const likeBlog = async () => {
       const likeCountElement = document.getElementById("numLike");
       function toggleLike() {
         const likeButton = document.getElementById('likeButton');
-        if (!token) {
 
-          localStorage.removeItem('likeState')
-        }
-        else {
-          if (likeButton.classList.contains('liked')) {
-            likeButton.classList.remove('liked');
-            localStorage.removeItem('likeState');
-          } else {
-            likeButton.classList.add('liked');
-            localStorage.setItem('likeState', 'red');
-          }
+        if (likeButton.classList.contains('liked')) {
+          likeButton.classList.remove('liked');
+          localStorage.removeItem('likeState');
+        } else {
+          likeButton.classList.add('liked');
+          localStorage.setItem('likeState', 'red');
+
         }
 
       }
@@ -253,8 +251,6 @@ const getBlogById = async () => {
         signUpButton.disabled = true;
         const urlComments = `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${blogIdComment}/comments`;
         try {
-          console.log(token);
-          console.log(blogIdComment);
           const response = await fetch(urlComments, {
             method: "POST",
             headers: {

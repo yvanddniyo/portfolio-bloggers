@@ -12,6 +12,9 @@
     align-items: center;
     justify-content: center;
 }
+#frame {
+    margin-left: 32rem;
+}
 .liked {
     color: red;
     }
