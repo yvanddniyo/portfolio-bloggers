@@ -41,6 +41,14 @@
     </section>
 
     <section id="main-content">
+      <div id="popup-container" style="display:none;">
+        <div class="content">
+            <div id="popup-message"></div>
+            <div class="pop-up">
+              <button id="popup-ok">OK</button>
+            </div>
+        </div>
+      </div>
       <div class="add-blog">
           <form id="form"  class="container-text-editor">
             <div class="title-article">
@@ -59,7 +67,7 @@
                <span id="textarea-error" class="errors"></span>
             </div>
             <div class="save-article">
-                <button id="save" type="submit" onclick="saveLocalStorage()">Save</button>
+                <button id="save" type="submit">Save</button>
             </div>
           </form>
       </div>

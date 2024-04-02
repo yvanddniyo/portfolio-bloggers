@@ -18,13 +18,13 @@ const inputValue = document.getElementById('client-name');
 const nameError = document.getElementById('text-error')
 const contentInput = document.getElementById('content')
 const contentError = document.getElementById('word-needed')
-
-
-
 const messageContainer = document.getElementById('message-container');
 const messageDelete = document.getElementById('message-delete')
 const msgLength = document.getElementById('msg')
 const getLoader = document.getElementById("loader");
+
+console.log(messageContainer)
+
 let messageId;
 document.addEventListener('DOMContentLoaded', async () => {
   messageContainer.innerHTML = "";

@@ -12,6 +12,9 @@
     align-items: center;
     justify-content: center;
 }
+.liked {
+    color: red;
+    }
 .loader {
     border: 4px solid rgb(255, 208, 0);
     width: 50px;
@@ -831,7 +834,7 @@ a li ul{
     border: none;
     background-color: #398638;
     color: #fff;
-    padding: 12px 1rem;
+    padding: 12px 2rem;
     font-family: poppins;
     border-radius: 16px;
     font-size: 16px;

@@ -42,6 +42,7 @@ const showPopup = (message, color, redirectUrl = null) => {
   });
 };
 
+let toggle;
 const urlParams = new URLSearchParams(window.location.search);
 const globalBlogId = urlParams.get("id");
 const token = localStorage.getItem("auth-token");
@@ -63,16 +64,34 @@ const likeBlog = async () => {
       numberLikes = updatedData.data.likesCount;
 
       const likeCountElement = document.getElementById("numLike");
-      const heartIcon = document.getElementById("heart");
+      function toggleLike() {
+        const likeButton = document.getElementById('likeButton');
+        if (!token) {
 
-      if (response.status === 200) {
-        const likeAction = (heartIcon.style.color = "red");
-        localStorage.getItem("likeItem", likeAction);
-      } else {
-        heartIcon.style.color = "green";
-        localStorage.getItem("likedBlog");
+          localStorage.removeItem('likeState')
+        }
+        else {
+          if (likeButton.classList.contains('liked')) {
+            likeButton.classList.remove('liked');
+            localStorage.removeItem('likeState');
+          } else {
+            likeButton.classList.add('liked');
+            localStorage.setItem('likeState', 'red');
+          }
+        }
+
       }
-      console.log(heartIcon);
+      toggle = toggleLike()
+      document.getElementById('likeButton').addEventListener('click', toggleLike);
+
+      window.onload = function () {
+        const likeState = localStorage.getItem('likeState');
+        const likeButton = document.getElementById('likeButton');
+
+        if (likeState === 'red') {
+          likeButton.classList.add('liked');
+        }
+      };
       likeCountElement.textContent = `${numberLikes}`;
     } else {
       showPopup(
@@ -87,7 +106,6 @@ const likeBlog = async () => {
   }
 };
 
-/* Get the like Buttton*/
 
 const likeCount = async () => {
   try {
@@ -166,7 +184,7 @@ const getBlogById = async () => {
           </div>
           <div class="more-info">
            <span style="color: white;"> 
-            <i onclick="likeBlog()"class="fa-solid fa-heart" id="heart">
+            <i onclick="likeBlog()"class="fa-solid fa-heart" id="likeButton">
             </i> 
             <span id="numLike" style="color: white;">
             ${numberLikes}
@@ -199,6 +217,14 @@ const getBlogById = async () => {
         </p>
       </form>
       `;
+      const likeButton = document.getElementById('likeButton');
+      likeButton.addEventListener('click', toggle);
+
+      const likeState = localStorage.getItem('likeState');
+      if (likeState === 'red') {
+        likeButton.classList.add('liked');
+      }
+
       const textareainput = document.getElementById("message");
       const commentsContainer = document.getElementById("form");
       const signUpButton = document.getElementById("send");

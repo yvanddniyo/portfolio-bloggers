@@ -3,9 +3,10 @@ const emailInputs = document.getElementById('email');
 const messageInputs = document.getElementById('message');
 const messagContainer = document.getElementById('message-container')
 const forms = document.getElementById('form');
+const signUpButton = document.getElementById('send');
 
-forms.addEventListener('submit', (event) =>{
-  event.preventDefault(); 
+forms.addEventListener('submit', (event) => {
+  event.preventDefault();
 
   const name = nameInputs.value;
   const email = emailInputs.value;
@@ -16,6 +17,9 @@ forms.addEventListener('submit', (event) =>{
     email,
     message
   };
+
+  signUpButton.textContent = 'Loading...';
+  signUpButton.disabled = true;
   fetch('https://be-portofolio-bloger-2.onrender.com/api/v1/queries', {
     method: 'POST',
     headers: {
@@ -37,7 +41,7 @@ forms.addEventListener('submit', (event) =>{
       } else {
         messagContainer.textContent = "Failed to submit";
         messagContainer.style.color = '#F48B2A'
-        
+
         nameInputs.value = "";
         emailInputs.value = "";
         messageInputs.value = "";
@@ -46,6 +50,8 @@ forms.addEventListener('submit', (event) =>{
           messageContainer.textContent = "";
         }, 5000);
       }
+      signUpButton.textContent = 'send';
+      signUpButton.disabled = true;
     })
     .catch(error => {
       console.error('Error:', error);
@@ -55,47 +61,7 @@ forms.addEventListener('submit', (event) =>{
 
 
 
-// const messageFromClient = () => {
-//     const storedMessages = JSON.parse(localStorage.getItem('messages')) || [];
-  
-//     const currentTimestamp = new Date().getTime();
-//     const formattedTimestamp = new Date(currentTimestamp).toLocaleString();
-  
-//     const messObj = {
-//       id: `${nameInputs.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
-//       date: formattedTimestamp,
-//       name: nameInputs.value,
-//       email: emailInputs.value,
-//       message: messageInputs.value
-//     };
-  
-//     storedMessages.push(messObj);
-  
-//     localStorage.setItem('messages', JSON.stringify(storedMessages));
-    
-  
-//     alert('Blog submitted successfully');
-//   };
-
- // Render message NUMBER
-// const message = JSON.parse(localStorage.getItem('messages')) || [];
-// const msgs = document.getElementById('msg');
-// msgs.innerText = message.length
-
-// // Render USERS NUMBER
-// const users =  JSON.parse(localStorage.getItem('users'))||[]
-// const usr = document.getElementById('users')
-// usr.innerText = users.length
-
-// // Render blogs NUMBER
-
-// const blogs = JSON.parse(localStorage.getItem('blogData')) || [];
-// const bgl = document.getElementById('blogs')
-// bgl.innerText = blogs.length
 
 
 
-  
-  
-  
-  
+

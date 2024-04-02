@@ -5,14 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/loader.css">
     <title></title>
+    <style>
+        .liked {
+    color: red;
+    }
+    </style>
 </head>
+
 <body>
-    <div id="popup-container">
-        <div id="popup-message">you don't have access to create account please log in.</div>
-        <button id="popup-ok">OK</button>
-      </div>
+    <button id="likeButton">Like</button>
+
       
-    <script src="../script/blogRender.js"></script>
+    <script>
+        // Function to toggle like button color and store state
+function toggleLike() {
+    var likeButton = document.getElementById('likeButton');
+    
+    // Check if the like button is currently red
+    if (likeButton.classList.contains('liked')) {
+        likeButton.classList.remove('liked');
+        localStorage.setItem('likeState', 'normal');
+    } else {
+        likeButton.classList.add('liked');
+        localStorage.setItem('likeState', 'red');
+    }
+}
+
+// Add event listener to the like button
+document.getElementById('likeButton').addEventListener('click', function() {
+    toggleLike();
+});
+
+// Check if there's a stored state and update the like button color accordingly
+window.onload = function() {
+    var likeState = localStorage.getItem('likeState');
+    if (likeState === 'red') {
+        document.getElementById('likeButton').classList.add('liked');
+    }
+};
+
+    </script>
 </body>
 </html>
 
