@@ -1,6 +1,6 @@
 const form = document.getElementById('form')
 const usernameInput = document.getElementById('username')
-const usernameError  = document.getElementById('username-error')
+const usernameError = document.getElementById('username-error')
 const emailInput = document.getElementById('email')
 const emailError = document.getElementById('email-error')
 const passwordInput = document.getElementById('password')
@@ -13,128 +13,138 @@ const signup = document.getElementById('sign-up')
 const signUpButton = document.getElementById('send');
 
 form.addEventListener('submit', async (e) => {
-   e.preventDefault();
-   usernameInputs = usernameInput.value;
-   emailInputs = emailInput.value;
-   const userObj = {
-     username: usernameInputs,
-     email: emailInputs,
-     password: passwordInput.value
-   };
+  e.preventDefault();
+  usernameInputs = usernameInput.value;
+  emailInputs = emailInput.value;
+  const userObj = {
+    username: usernameInputs,
+    email: emailInputs,
+    password: passwordInput.value
+  };
 
-   signUpButton.textContent = 'Loading...';
-   signUpButton.disabled = true;
- 
-   const uri = 'https://be-portofolio-bloger-2.onrender.com/api/v1/auth/register';
-   try {
-     const response = await fetch(uri, {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify(userObj)
-     });
- 
-     if (response.ok) {
-       showPopup('Your account was successfully created.', '#white', './login.html');
-     } else {
-       showPopup('Your account failed to create or the email is already in use.', '#F48B2A');
-     }
-   } catch (error) {
-     showPopup('An error occurred. Please try again.', '#F48B2A');
-   } finally {
-   
-     signUpButton.textContent = 'Sign Up';
-     signUpButton.disabled = false;
-   }
- });
+  signUpButton.textContent = 'Loading...';
+  signUpButton.disabled = true;
 
- const showPopup = (message, color, redirectUrl=null) => {
-   const popupContainer = document.getElementById('popup-container');
-   const popupMessage = document.getElementById('popup-message');
-   const popupOk = document.getElementById('popup-ok');
-   console.log(popupOk)
-   popupMessage.textContent = message;
-   popupMessage.style.color = color;
-   popupContainer.style.display = 'block';
- 
-   popupOk.addEventListener('click', (e) => {
-      e.preventDefault()
-     popupContainer.style.display = 'none';
+  const uri = 'https://be-portofolio-bloger-2.onrender.com/api/v1/auth/register';
+  try {
+    const response = await fetch(uri, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userObj)
+    });
 
-     if(redirectUrl) {
+    if (response.ok) {
+      Swal.fire({
+        text: "Your account was successfully created",
+        icon: "success",
+        footer: '<a href="../../Html/login.html">Please Log in</a>',
+      });
+    } else {
+      Swal.fire({
+        text: "Your account failed to create or the email is already in use",
+        icon: "success",
+      });
+    }
+  } catch (error) {
+    Swal.fire({
+      text: "Your account failed to create or the email is already in use",
+      icon: "success",
+    });
+  } finally {
+
+    signUpButton.textContent = 'Sign Up';
+    signUpButton.disabled = false;
+  }
+});
+
+const showPopup = (message, color, redirectUrl = null) => {
+  const popupContainer = document.getElementById('popup-container');
+  const popupMessage = document.getElementById('popup-message');
+  const popupOk = document.getElementById('popup-ok');
+  console.log(popupOk)
+  popupMessage.textContent = message;
+  popupMessage.style.color = color;
+  popupContainer.style.display = 'block';
+
+  popupOk.addEventListener('click', (e) => {
+    e.preventDefault()
+    popupContainer.style.display = 'none';
+
+    if (redirectUrl) {
       window.location.href = redirectUrl;
-     }
-   });
- }
+    }
+  });
+}
 
 form.addEventListener('submit', (e) => {
-   const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
+  const email_validation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z0-9]{2,4}$)/
 
-   if(usernameInput.value === "" || usernameInput.value === null) {
+  if (usernameInput.value === "" || usernameInput.value === null) {
     usernameError.innerText = "please your username required"
-       e.preventDefault()
-   }
-   else {
-    usernameError.innerHTML ="";
-    usernameInput.value =""
-   }
-   if(!emailInput.value.match(email_validation)) {
+    e.preventDefault()
+  }
+  else {
+    usernameError.innerHTML = "";
+    usernameInput.value = ""
+  }
+  if (!emailInput.value.match(email_validation)) {
     emailError.innerHTML = "please your email is incorrect"
     e.preventDefault()
-   }
-   else {
+  }
+  else {
     emailError.innerHTML = "";
-    emailInput.value =""
-   }
+    emailInput.value = ""
+  }
 
-    if(passwordInput.value.length <=5) {
+  if (passwordInput.value.length <= 5) {
     passwordError.innerText = "password must be more that 5 characters"
     e.preventDefault()
-   }
-   else {
+  }
+  else {
     passwordError.innerHTML = "";
-   passwordInput.value =""
+    passwordInput.value = ""
 
-   }
+  }
 
-   if(confirmPassword.value.length <=5) {
+  if (confirmPassword.value.length <= 5) {
     confirmPasswordError.innerHTML = "password must be more that 5 characters"
     e.preventDefault()
-   }
-   
-   else {
+  }
+
+  else {
     confirmPassword.value = "";
     confirmPasswordError.innerHTML = '';
-   }
+  }
 
-   if (passwordInput.value != confirmPassword.value) {
+  if (passwordInput.value != confirmPassword.value) {
     equalPasswordError.innerHTML = "please your password not match"
-       e.preventDefault()
+    e.preventDefault()
   } else {
     passwordInput.value = '';
-    confirmPassword.value ="";
+    confirmPassword.value = "";
     equalPasswordError.innerHTML = "";
 
   }
-  
+
 })
 
 // remove error
 
 const startTyping = () => {
-   if (usernameInput.value  ) {
-     usernameError.innerText = ""
-     // messageError.innerText = ""
- 
-   }
-  if(emailInput.value){
-     emailError.innerText = ""
-   }
-  if(passwordInput.value){
-     passwordError.innerText = ""
-   }
- }
+  if (usernameInput.value) {
+    usernameError.innerText = ""
+    // messageError.innerText = ""
+
+  }
+  if (emailInput.value) {
+    emailError.innerText = ""
+  }
+  if (passwordInput.value) {
+    passwordError.innerText = ""
+  }
+}
 
 const passwordField = document.getElementById('password');
 const confirmPasswords = document.getElementById('confirm-password');
@@ -143,30 +153,30 @@ let removeConf;
 
 // CHECKING IF PASSWORDS ARE SAME
 
-const checkSamePassword = () =>  {
-   if(passwordField.value != confirmPassword.value) {
-      document.getElementById('create-same-pass').style.color = 'red';
-      document.getElementById('create-same-pass').innerHTML = 'Please use same password!';
-      document.getElementById('send').style.disable = 'true';
-      document.getElementById('send').style.opacity = '0.4';
-   }
-   else {
-      document.getElementById('create-same-pass').style.color = 'green';
-     removeConf = document.getElementById('create-same-pass').innerHTML = 'Relax, password are same';
-      document.getElementById('send').style.disable = 'false';
-      document.getElementById('send').style.opacity = '1';
-      
-   }
-   if (removeConf) {
-      document.getElementById('create-same-pass').innerHTML = '';
-   }
+const checkSamePassword = () => {
+  if (passwordField.value != confirmPassword.value) {
+    document.getElementById('create-same-pass').style.color = 'red';
+    document.getElementById('create-same-pass').innerHTML = 'Please use same password!';
+    document.getElementById('send').style.disable = 'true';
+    document.getElementById('send').style.opacity = '0.4';
+  }
+  else {
+    document.getElementById('create-same-pass').style.color = 'green';
+    removeConf = document.getElementById('create-same-pass').innerHTML = 'Relax, password are same';
+    document.getElementById('send').style.disable = 'false';
+    document.getElementById('send').style.opacity = '1';
+
+  }
+  if (removeConf) {
+    document.getElementById('create-same-pass').innerHTML = '';
+  }
 }
 
 // SHOWING PASSWORD OR HIDE IT
- showPass.addEventListener('click', ()=>{
-    const type = passwordField.getAttribute('type') === "password"?
+showPass.addEventListener('click', () => {
+  const type = passwordField.getAttribute('type') === "password" ?
     'text' : 'password'
-    passwordField.setAttribute('type', type)
-    confirmPassword.setAttribute('type', type)
- 
+  passwordField.setAttribute('type', type)
+  confirmPassword.setAttribute('type', type)
+
 })

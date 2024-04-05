@@ -633,6 +633,7 @@ a li ul{
     border: none;
     font-family: poppins;
     background: none;
+    cursor: pointer;
 }
 .more-info a {
     text-decoration: none;

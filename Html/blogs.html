@@ -7,11 +7,96 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="icon" type="image/png" href="./assets/whiteN.png">
+
     <link rel="stylesheet" href="../css/styles.css">
     <title>Portofolio || Blogger</title>
  </head>
  <body>
+  <section id="landing-page">
+    <div class="container-nav">
+      <div class="container-logo">
+        <img src="../assets/main Logo.png" alt="Logo" />
+      </div>
+      <div class="container-navbar">
+        <ul class="container-navbar-lists">
+          <li>
+            <a href="./index.html">Home</a>
+          </li>
+          <li>
+            <a href="">About me</a>
+          </li>
+          <li>
+            <a href="">Skills</a>
+          </li>
+          <li>
+            <a href="">My project</a>
+          </li>
+          <li>
+            <a href="./blogs.html">Blogs</a>
+          </li>
+          <li class="signup">
+            <a href="./signup.html">Sign Up</a>
+          </li>
+          <li class="login">
+            <a href="./login.html">LogIn</a>
+          </li>
+          <select
+            class="login-user"
+            id="user-dropdown"
+            onchange="handleLogOut(event.target.value)"
+          >
+            <option id="user-option" value="user"></option>
+            <option value="logout">Log Out</option>
+          </select>
+        </ul>
+      </div>
+      <div class="menus">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+    <div class="container-blog">
+      <div class="container-blog-title">
+        <h1>Blogs</h1>
+        <p>My thoughts on technology and business, welcome to subscribe</p>
+        <h2>Subscribe My Blog</h2>
+      </div>
+    </div>
     <div id="blog"></div>
+  </section>
+  <section id="contact">
+    <section id="footer">
+      <div class="container-footer">
+        <div class="copyright">
+          <i class="fa-solid fa-copyright"></i>
+          Yvanniyonshima. all right Reserved
+        </div>
+        <div class="copyright">
+          <a href=""> privacy and policy</a>
+        </div>
+        <div class="copyright">
+          <a href="">Terms and Condition</a>
+        </div>
+        <div class="copyright">
+          <a href="">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
+        <div class="copyright">
+          coded by<span>Yvan</span>
+        </div>
+      </div>
+    </section>
+  </section>
+  
   <script src="../script/script.js"></script>
   <!-- <script src="../script/blog.js"></script> -->
   <script src="../script/Blogs.jsx"  type="text/babel"></script>
