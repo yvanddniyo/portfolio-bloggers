@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <link rel="stylesheet" href="../css/loader.css">
     <title></title>
     <style>
@@ -13,38 +15,8 @@
 </head>
 
 <body>
+    <Sample />
     <button id="likeButton">Like</button>
-
-      
-    <script>
-        // Function to toggle like button color and store state
-function toggleLike() {
-    var likeButton = document.getElementById('likeButton');
-    
-    // Check if the like button is currently red
-    if (likeButton.classList.contains('liked')) {
-        likeButton.classList.remove('liked');
-        localStorage.setItem('likeState', 'normal');
-    } else {
-        likeButton.classList.add('liked');
-        localStorage.setItem('likeState', 'red');
-    }
-}
-
-// Add event listener to the like button
-document.getElementById('likeButton').addEventListener('click', function() {
-    toggleLike();
-});
-
-// Check if there's a stored state and update the like button color accordingly
-window.onload = function() {
-    var likeState = localStorage.getItem('likeState');
-    if (likeState === 'red') {
-        document.getElementById('likeButton').classList.add('liked');
-    }
-};
-
-    </script>
 </body>
 </html>
 

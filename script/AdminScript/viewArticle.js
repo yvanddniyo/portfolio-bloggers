@@ -119,7 +119,6 @@ const editBlog = async (element) => {
                 'auth-token': token
             }
         });
-        blogSave.innerText = "Update Blog";
 
         if (!response.ok) {
             throw new Error('Failed to fetch the blog data');
@@ -127,38 +126,43 @@ const editBlog = async (element) => {
 
         const blog = await response.json();
         blogTitle.value = blog.title;
-        blogImage.file = blog.image;
+        blogImage.value = '';
         tinymce.get('content').setContent(blog.content);
 
         FormAdd.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             const titleInputs = blogTitle.value;
-            const blogImages = blogImage.file[0];
+            const blogImages = blogImage.files[0]; // Assuming blogImage is an input field of type file
             const textDescriptions = tinymce.get('content').getContent();
             const formData = new FormData();
             formData.append('title', titleInputs);
-            formData.append('image', blogImages)
+            formData.append('image', blogImages);
             formData.append('content', textDescriptions);
 
-            blogSave.textContent = "Updating...";
+            try {
+                blogSave.textContent = "Updating...";
 
-            const updateResponse = await fetch(updateUrl, {
-                method: 'PATCH',
-                headers: {
-                    'auth-token': token
-                },
-                body: formData
-            });
+                const updateResponse = await fetch(updateUrl, {
+                    method: 'PATCH',
+                    headers: {
+                        'auth-token': token
+                    },
+                    body: formData
+                });
 
-            if (!updateResponse.ok) {
-                throw new Error('Failed to update the blog');
+                if (!updateResponse.ok) {
+                    throw new Error('Failed to update the blog');
+                }
+
+                showPopup('Blog updated successfully', '#4CAF50', () => { });
+            } catch (updateError) {
+                console.error('Error updating the blog:', updateError);
+                showPopup('Failed to update the blog. Please try again later.', '#F44336');
+            } finally {
+                blogSave.textContent = "Update Blog";
+                blogSave.disabled = false;
             }
-
-            showPopup('Blog updated successfully', '#4CAF50', () => {
-            });
-            blogSave.innerText = "Update Blog";
-            blogSave.disabled = false;
         });
 
     } catch (error) {
@@ -166,6 +170,7 @@ const editBlog = async (element) => {
         showPopup('An error occurred. Please try again later.', '#F44336');
     }
 };
+
 
 const handleEditButtonClick = (element) => {
     editBlog(element);

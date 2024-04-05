@@ -1,330 +1,330 @@
-const textareainput = document.getElementById("message");
-const sectionComment = document.getElementById("comment-section");
-const submitButton = document.getElementById("send");
-const commentsContainer = document.getElementById("form");
-const usernameInput = document.getElementById("client-name");
-const nameErrors = document.querySelector(".text-error");
-const messageErrors = document.querySelector(".message-err");
-const commentC = document.querySelector(".fa-comment");
-const likeBlogButton = document.getElementById("get-blog");
-const signup = document.getElementById("sign-up");
-const blogLoader = document.getElementById("loader");
+// const textareainput = document.getElementById("message");
+// const sectionComment = document.getElementById("comment-section");
+// const submitButton = document.getElementById("send");
+// const commentsContainer = document.getElementById("form");
+// const usernameInput = document.getElementById("client-name");
+// const nameErrors = document.querySelector(".text-error");
+// const messageErrors = document.querySelector(".message-err");
+// const commentC = document.querySelector(".fa-comment");
+// const likeBlogButton = document.getElementById("get-blog");
+// const signup = document.getElementById("sign-up");
+// const blogLoader = document.getElementById("loader");
 
 
-let numberLikes;
-
-const decodeJWT = (token) => {
-  const parts = token.split(".");
-  const payload = JSON.parse(
-    atob(parts[1].replace(/-/g, "+").replace(/_/g, "/"))
-  );
-  return { payload };
-};
-
-//  showing the pop up message
-
-const showPopup = (message, color, redirectUrl = null) => {
-  const popupContainer = document.getElementById("popup-container");
-  const popupMessage = document.getElementById("popup-message");
-  const popupOk = document.getElementById("popup-ok");
-  console.log(popupOk);
-  popupMessage.textContent = message;
-  popupMessage.style.color = color;
-  popupContainer.style.display = "block";
-
-  popupOk.addEventListener("click", (e) => {
-    e.preventDefault();
-    popupContainer.style.display = "none";
-
-    if (redirectUrl) {
-      window.location.href = redirectUrl;
-    }
-  });
-};
-
-let toggle;
-const urlParams = new URLSearchParams(window.location.search);
-const globalBlogId = urlParams.get("id");
-const token = localStorage.getItem("auth-token");
-
-const urlLike = `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${globalBlogId}/likes`;
-
-const likeBlog = async () => {
-  try {
-    const response = await fetch(urlLike, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": token,
-      },
-    });
-    const userIdLike = decodeJWT(token).payload.id
-    console.log(userIdLike)
-    if (response.ok) {
-      const updatedResponse = await fetch(urlLike);
-      const updatedData = await updatedResponse.json();
-      numberLikes = updatedData.data.likesCount;
-
-      const likeCountElement = document.getElementById("numLike");
-      function toggleLike() {
-        const likeButton = document.getElementById('likeButton');
-
-        if (likeButton.classList.contains('liked')) {
-          likeButton.classList.remove('liked');
-          localStorage.removeItem('likeState');
-        } else {
-          likeButton.classList.add('liked');
-          localStorage.setItem('likeState', 'red');
-
-        }
-
-      }
-      toggle = toggleLike()
-      document.getElementById('likeButton').addEventListener('click', toggleLike);
-
-      window.onload = function () {
-        const likeState = localStorage.getItem('likeState');
-        const likeButton = document.getElementById('likeButton');
-
-        if (likeState === 'red') {
-          likeButton.classList.add('liked');
-        }
-      };
-      likeCountElement.textContent = `${numberLikes}`;
-    } else {
-      showPopup(
-        "Hmm... You do not have account. Please log in",
-        "#F48B2A",
-        "./login.html"
-      );
-      console.log("fail");
-    }
-  } catch (error) {
-    console.error("Error in liking :", error);
-  }
-};
-
-
-const likeCount = async () => {
-  try {
-    const response = await fetch(urlLike);
-    let data = await response.json();
-    numberLikes = data.data.likesCount;
-  } catch (error) {
-    console.error("Error in liking :", error);
-  }
-};
-likeCount();
-
-let commentsCounter;
-blogLoader.style.display = "block";
-
-const getComments = async (commentId) => {
-  const getResponse = await fetch(
-    `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${commentId}/comments`
-  );
-  const comments = await getResponse.json();
-  blogLoader.style.display = "none";
-
-  commentsCounter = comments.length;
-  sectionComment.innerHTML = "";
-  comments.forEach((comment) => {
-    const commentsHTML = `
-      <div class="comments">
-        <div class="comment-user">
-          <img src="https://static.vecteezy.com/system/resources/previews/005/129/844/non_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
-        </div>
-        <div class="user-comments">
-          <h3>${comment.name}</h3>
-          <p class="data">${new Date(comment.updatedAt).toLocaleString()}</p>
-          <p>${comment.content}</p>
-        </div>
-      </div>
-    `;
-    sectionComment.innerHTML += commentsHTML;
-  });
-  return commentsCounter;
-};
-
-const articleContainer = document.getElementById("main-article");
-
-let blogIdComment;
-
-blogLoader.style.display = "block";
-
-const getBlogById = async () => {
-  const blogId = new URLSearchParams(window.location.search).get("id");
-  await fetch(
-    `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${blogId}`
-  )
-    .then((res) => res.json())
-    .then(async (singleBlog) => {
-      blogLoader.style.display = "none";
-      blogIdComment = singleBlog._id;
-      const commentsLength = await getComments(blogId);
-      articleContainer.innerHTML = `
-        <div class="container-article-title">
-          <h2>${singleBlog.title}</h2>
-        </div>
-        <div class="line-article"></div>
-        <div class="info-article">
-          <p class="web-dev">Web developer</p>
-          <p class="author"> Text: <span>Yvan</span></p>
-          <p class="date-blog">${new Date(
-        singleBlog.updatedAt
-      ).toLocaleString()}</p>
-          <p class="read-time">Read 1min ago</p>
-        </div>
-        <div class="line-article-bottom"></div>
-        <div class="container-full-article">
-          <div class="img-article">
-            <img src=${singleBlog.image} alt="article">
-          </div>
-          <div class="more-info">
-           <span style="color: white;"> 
-            <i onclick="likeBlog()"class="fa-solid fa-heart" id="likeButton">
-            </i> 
-            <span id="numLike" style="color: white;">
-            ${numberLikes}
-            </span>
-           </span>
-            <a href="#comments" style="margin-right: 45px;">
-              <span style="color: white; margin-left: 3px;"><i class="fa-solid fa-comment"></i>
-              <span id="num-comment" style="color: white;">${commentsLength}</span>
-              </span>
-            </a>
-          </div>
-          <div class="text-container" style="margin: 1.5rem 0px;">
-            ${singleBlog.content}
-          </div>
-        </div>
-        <div class="references">
-          <p>web development</p>
-          <p>web developer Job</p>
-          <p>Full-stack development</p>
-        </div>
-
-        <form id="form" class="leave-a-comment">
-        <h4>Leave a comment</h4>
-        <textarea name="content" id="message" cols="30" rows="10" placeholder="Leave us a comment"></textarea><br>
-        <span class="message-err" style="font-size: 13px; color: brown;"></span>
-        <span id="word-needed"></span><br>
-        <button id="send" type="submit">Comment</button>
-        <p style="font-size: 28px; color: #1A9718; font-weight: 600">
-         Comments
-        </p>
-      </form>
-      `;
-      const likeButton = document.getElementById('likeButton');
-      likeButton.addEventListener('click', toggle);
-
-      const likeState = localStorage.getItem('likeState');
-      if (likeState === 'red') {
-        likeButton.classList.add('liked');
-      }
-
-      const textareainput = document.getElementById("message");
-      const commentsContainer = document.getElementById("form");
-      const signUpButton = document.getElementById("send");
-      const commentLength = document.getElementById('num-comment');
-
-
-      commentsContainer.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const token = localStorage.getItem("auth-token");
-        if (!token) {
-          showPopup("Hmm... You have to log in", "#F48B2A", "./login.html");
-        }
-
-        const decodedToken = decodeJWT(token);
-        const userRole = decodedToken.payload.username;
-
-        let sectionComments = textareainput.value;
-
-        const commentObj = {
-          blogId: blogIdComment,
-          name: userRole,
-          content: sectionComments,
-        };
-        blogLoader.style.display = "block";
-        signUpButton.textContent = "Loading...";
-        signUpButton.disabled = true;
-        const urlComments = `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${blogIdComment}/comments`;
-        try {
-          const response = await fetch(urlComments, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": token,
-            },
-            body: JSON.stringify(commentObj),
-          });
-          blogLoader.style.display = "none";
-          if (response.ok) {
-            showPopup("You have successfully commented.", "#F48B2A");
-            textareainput.value = "";
-            const updatedCommentsCounter = await getComments(blogIdComment);
-            commentLength.textContent = updatedCommentsCounter
-          } else {
-            showPopup("Error occurred during commenting.", "#F48B2A");
-          }
-        } catch (error) {
-          console.log(error);
-          showPopup('An error occurred. Please try again.', '#F48B2A');
-        } finally {
-          signUpButton.textContent = "Comment";
-          signUpButton.disabled = false;
-        }
-      });
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
-};
-getBlogById();
-
-// let token = localStorage.getItem('auth-token');
+// let numberLikes;
 
 // const decodeJWT = (token) => {
 //   const parts = token.split(".");
-//   const payload = JSON.parse(atob(parts[1].replace(/-/g, "+").replace(/_/g, "/")));
+//   const payload = JSON.parse(
+//     atob(parts[1].replace(/-/g, "+").replace(/_/g, "/"))
+//   );
 //   return { payload };
 // };
 
-let decodedToken, userRole;
+// //  showing the pop up message
 
-if (token) {
-  decodedToken = decodeJWT(token);
-  userRole = decodedToken.payload.username;
-}
+// const showPopup = (message, color, redirectUrl = null) => {
+//   const popupContainer = document.getElementById("popup-container");
+//   const popupMessage = document.getElementById("popup-message");
+//   const popupOk = document.getElementById("popup-ok");
+//   console.log(popupOk);
+//   popupMessage.textContent = message;
+//   popupMessage.style.color = color;
+//   popupContainer.style.display = "block";
 
-const logOut = () => {
-  localStorage.removeItem('auth-token');
-  const userOption = document.getElementById('user-option');
-  userOption.textContent = '';
-}
+//   popupOk.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     popupContainer.style.display = "none";
 
-const handleLogOut = (selectElement) => {
-  const userOption = document.getElementById('user-option');
+//     if (redirectUrl) {
+//       window.location.href = redirectUrl;
+//     }
+//   });
+// };
 
-  if (selectElement.value === 'logout') {
-    logOut();
-  } else if (selectElement.value === 'user') {
-    if (token) {
-      userOption.textContent = userRole;
-    } else {
-      userOption.textContent = "No logged";
-    }
-  }
-}
+// let toggle;
+// const urlParams = new URLSearchParams(window.location.search);
+// const globalBlogId = urlParams.get("id");
+// const token = localStorage.getItem("auth-token");
 
-const userOption = document.getElementById('user-option');
+// const urlLike = `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${globalBlogId}/likes`;
 
-if (token) {
-  userOption.textContent = userRole;
-} else {
-  userOption.textContent = "No logged";
-}
+// const likeBlog = async () => {
+//   try {
+//     const response = await fetch(urlLike, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "auth-token": token,
+//       },
+//     });
+//     const userIdLike = decodeJWT(token).payload.id
+//     console.log(userIdLike)
+//     if (response.ok) {
+//       const updatedResponse = await fetch(urlLike);
+//       const updatedData = await updatedResponse.json();
+//       numberLikes = updatedData.data.likesCount;
+
+//       const likeCountElement = document.getElementById("numLike");
+//       function toggleLike() {
+//         const likeButton = document.getElementById('likeButton');
+
+//         if (likeButton.classList.contains('liked')) {
+//           likeButton.classList.remove('liked');
+//           localStorage.removeItem('likeState');
+//         } else {
+//           likeButton.classList.add('liked');
+//           localStorage.setItem('likeState', 'red');
+
+//         }
+
+//       }
+//       toggle = toggleLike()
+//       document.getElementById('likeButton').addEventListener('click', toggleLike);
+
+//       window.onload = function () {
+//         const likeState = localStorage.getItem('likeState');
+//         const likeButton = document.getElementById('likeButton');
+
+//         if (likeState === 'red') {
+//           likeButton.classList.add('liked');
+//         }
+//       };
+//       likeCountElement.textContent = `${numberLikes}`;
+//     } else {
+//       showPopup(
+//         "Hmm... You do not have account. Please log in",
+//         "#F48B2A",
+//         "./login.html"
+//       );
+//       console.log("fail");
+//     }
+//   } catch (error) {
+//     console.error("Error in liking :", error);
+//   }
+// };
+
+
+// const likeCount = async () => {
+//   try {
+//     const response = await fetch(urlLike);
+//     let data = await response.json();
+//     numberLikes = data.data.likesCount;
+//   } catch (error) {
+//     console.error("Error in liking :", error);
+//   }
+// };
+// likeCount();
+
+// let commentsCounter;
+// blogLoader.style.display = "block";
+
+// const getComments = async (commentId) => {
+//   const getResponse = await fetch(
+//     `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${commentId}/comments`
+//   );
+//   const comments = await getResponse.json();
+//   blogLoader.style.display = "none";
+
+//   commentsCounter = comments.length;
+//   sectionComment.innerHTML = "";
+//   comments.forEach((comment) => {
+//     const commentsHTML = `
+//       <div class="comments">
+//         <div class="comment-user">
+//           <img src="https://static.vecteezy.com/system/resources/previews/005/129/844/non_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
+//         </div>
+//         <div class="user-comments">
+//           <h3>${comment.name}</h3>
+//           <p class="data">${new Date(comment.updatedAt).toLocaleString()}</p>
+//           <p>${comment.content}</p>
+//         </div>
+//       </div>
+//     `;
+//     sectionComment.innerHTML += commentsHTML;
+//   });
+//   return commentsCounter;
+// };
+
+// const articleContainer = document.getElementById("main-article");
+
+// let blogIdComment;
+
+// blogLoader.style.display = "block";
+
+// const getBlogById = async () => {
+//   const blogId = new URLSearchParams(window.location.search).get("id");
+//   await fetch(
+//     `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${blogId}`
+//   )
+//     .then((res) => res.json())
+//     .then(async (singleBlog) => {
+//       blogLoader.style.display = "none";
+//       blogIdComment = singleBlog._id;
+//       const commentsLength = await getComments(blogId);
+//       articleContainer.innerHTML = `
+//         <div class="container-article-title">
+//           <h2>${singleBlog.title}</h2>
+//         </div>
+//         <div class="line-article"></div>
+//         <div class="info-article">
+//           <p class="web-dev">Web developer</p>
+//           <p class="author"> Text: <span>Yvan</span></p>
+//           <p class="date-blog">${new Date(
+//         singleBlog.updatedAt
+//       ).toLocaleString()}</p>
+//           <p class="read-time">Read 1min ago</p>
+//         </div>
+//         <div class="line-article-bottom"></div>
+//         <div class="container-full-article">
+//           <div class="img-article">
+//             <img src=${singleBlog.image} alt="article">
+//           </div>
+//           <div class="more-info">
+//            <span style="color: white;">
+//             <i onclick="likeBlog()"class="fa-solid fa-heart" id="likeButton">
+//             </i>
+//             <span id="numLike" style="color: white;">
+//             ${numberLikes}
+//             </span>
+//            </span>
+//             <a href="#comments" style="margin-right: 45px;">
+//               <span style="color: white; margin-left: 3px;"><i class="fa-solid fa-comment"></i>
+//               <span id="num-comment" style="color: white;">${commentsLength}</span>
+//               </span>
+//             </a>
+//           </div>
+//           <div class="text-container" style="margin: 1.5rem 0px;">
+//             ${singleBlog.content}
+//           </div>
+//         </div>
+//         <div class="references">
+//           <p>web development</p>
+//           <p>web developer Job</p>
+//           <p>Full-stack development</p>
+//         </div>
+
+//         <form id="form" class="leave-a-comment">
+//         <h4>Leave a comment</h4>
+//         <textarea name="content" id="message" cols="30" rows="10" placeholder="Leave us a comment"></textarea><br>
+//         <span class="message-err" style="font-size: 13px; color: brown;"></span>
+//         <span id="word-needed"></span><br>
+//         <button id="send" type="submit">Comment</button>
+//         <p style="font-size: 28px; color: #1A9718; font-weight: 600">
+//          Comments
+//         </p>
+//       </form>
+//       `;
+//       const likeButton = document.getElementById('likeButton');
+//       likeButton.addEventListener('click', toggle);
+
+//       const likeState = localStorage.getItem('likeState');
+//       if (likeState === 'red') {
+//         likeButton.classList.add('liked');
+//       }
+
+//       const textareainput = document.getElementById("message");
+//       const commentsContainer = document.getElementById("form");
+//       const signUpButton = document.getElementById("send");
+//       const commentLength = document.getElementById('num-comment');
+
+
+//       commentsContainer.addEventListener("submit", async (e) => {
+//         e.preventDefault();
+//         const token = localStorage.getItem("auth-token");
+//         if (!token) {
+//           showPopup("Hmm... You have to log in", "#F48B2A", "./login.html");
+//         }
+
+//         const decodedToken = decodeJWT(token);
+//         const userRole = decodedToken.payload.username;
+
+//         let sectionComments = textareainput.value;
+
+//         const commentObj = {
+//           blogId: blogIdComment,
+//           name: userRole,
+//           content: sectionComments,
+//         };
+//         blogLoader.style.display = "block";
+//         signUpButton.textContent = "Loading...";
+//         signUpButton.disabled = true;
+//         const urlComments = `https://be-portofolio-bloger-2.onrender.com/api/v1/blogs/${blogIdComment}/comments`;
+//         try {
+//           const response = await fetch(urlComments, {
+//             method: "POST",
+//             headers: {
+//               "Content-Type": "application/json",
+//               "auth-token": token,
+//             },
+//             body: JSON.stringify(commentObj),
+//           });
+//           blogLoader.style.display = "none";
+//           if (response.ok) {
+//             showPopup("You have successfully commented.", "#F48B2A");
+//             textareainput.value = "";
+//             const updatedCommentsCounter = await getComments(blogIdComment);
+//             commentLength.textContent = updatedCommentsCounter
+//           } else {
+//             showPopup("Error occurred during commenting.", "#F48B2A");
+//           }
+//         } catch (error) {
+//           console.log(error);
+//           showPopup('An error occurred. Please try again.', '#F48B2A');
+//         } finally {
+//           signUpButton.textContent = "Comment";
+//           signUpButton.disabled = false;
+//         }
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching data:", error);
+//     });
+// };
+// getBlogById();
+
+// // let token = localStorage.getItem('auth-token');
+
+// // const decodeJWT = (token) => {
+// //   const parts = token.split(".");
+// //   const payload = JSON.parse(atob(parts[1].replace(/-/g, "+").replace(/_/g, "/")));
+// //   return { payload };
+// // };
+
+// let decodedToken, userRole;
+
+// if (token) {
+//   decodedToken = decodeJWT(token);
+//   userRole = decodedToken.payload.username;
+// }
+
+// const logOut = () => {
+//   localStorage.removeItem('auth-token');
+//   const userOption = document.getElementById('user-option');
+//   userOption.textContent = '';
+// }
+
+// const handleLogOut = (selectElement) => {
+//   const userOption = document.getElementById('user-option');
+
+//   if (selectElement.value === 'logout') {
+//     logOut();
+//   } else if (selectElement.value === 'user') {
+//     if (token) {
+//       userOption.textContent = userRole;
+//     } else {
+//       userOption.textContent = "No logged";
+//     }
+//   }
+// }
+
+// const userOption = document.getElementById('user-option');
+
+// if (token) {
+//   userOption.textContent = userRole;
+// } else {
+//   userOption.textContent = "No logged";
+// }
 
 
 

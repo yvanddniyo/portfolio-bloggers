@@ -42,7 +42,7 @@ a li ul{
     --color-green:#1A9718;
 }
 #popup-container {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 1;
   left: 20%;
@@ -627,6 +627,13 @@ a li ul{
     /* flex-wrap: wrap; */
     
 }
+.more-info button {
+    text-decoration: none;
+    color: #18e614;
+    border: none;
+    font-family: poppins;
+    background: none;
+}
 .more-info a {
     text-decoration: none;
     color: #18e614;
@@ -936,6 +943,10 @@ a li ul{
 .user-comments p{
     width: 60%;
     font-size: 13px;
+}
+.user-comments h3 {
+font-size: 14px;
+color: #189780;
 }
 .heart-unliked {
     color: gray; 

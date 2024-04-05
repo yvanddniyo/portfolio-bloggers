@@ -66,7 +66,7 @@ const showPopup = (message, color, callback) => {
 
   popupOk.addEventListener("click", async (e) => {
     e.preventDefault();
-    popupNo.style.display = "none";
+    // popupNo.style.display = "none";
     popupContainer.style.display = "none";
 
     if (callback && typeof callback === 'function') {

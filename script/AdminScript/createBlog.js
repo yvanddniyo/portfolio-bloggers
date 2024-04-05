@@ -40,24 +40,24 @@ console.log(blogSave);
 //     }
 //   };
 
-const showPopup = (message, color, redirectUrl = null) => {
-  const popupContainer = document.getElementById("popup-container");
-  const popupMessage = document.getElementById("popup-message");
-  const popupOk = document.getElementById("popup-ok");
-  console.log(popupOk);
-  popupMessage.textContent = message;
-  popupMessage.style.color = color;
-  popupContainer.style.display = "block";
+// const showPopup = (message, color, redirectUrl = null) => {
+//   const popupContainer = document.getElementById("popup-container");
+//   const popupMessage = document.getElementById("popup-message");
+//   const popupOk = document.getElementById("popup-ok");
+//   console.log(popupOk);
+//   popupMessage.textContent = message;
+//   popupMessage.style.color = color;
+//   popupContainer.style.display = "block";
 
-  popupOk.addEventListener("click", (e) => {
-    e.preventDefault();
-    popupContainer.style.display = "none";
+//   popupOk.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     popupContainer.style.display = "none";
 
-    if (redirectUrl) {
-      window.location.href = redirectUrl;
-    }
-  });
-};
+//     if (redirectUrl) {
+//       window.location.href = redirectUrl;
+//     }
+//   });
+// };
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
