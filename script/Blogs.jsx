@@ -119,10 +119,7 @@ const Blogs = () => {
                         <span>{likes[blog._id]}</span>
                         <i className="fa-solid fa-heart"></i>
                       </button>
-                      <button
-                        id="comment-button"
-                        //   onClick={commentCount(this)}
-                      >
+                      <button id="comment-button">
                         <span>{comments[blog._id]}</span>
                         <i className="fa-solid fa-comment"></i>
                       </button>

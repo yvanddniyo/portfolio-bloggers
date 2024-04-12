@@ -50,7 +50,7 @@ form.addEventListener('submit', async (e) => {
         Swal.fire({
           text: "Your successfully logged as Admin.",
           icon: "success",
-          footer: '<a href="../../Html/blogs.html">Click here to continue</a>'
+          footer: '<a href="../../Html/adminHTML/dashboard.html">Click here to continue</a>'
         });
       }
     }
