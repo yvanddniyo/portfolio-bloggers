@@ -14,10 +14,10 @@ const signUpButton = document.getElementById('send');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  usernameInputs = usernameInput.value;
+  usernames = usernameInput.value;
   emailInputs = emailInput.value;
   const userObj = {
-    username: usernameInputs,
+    username: usernames,
     email: emailInputs,
     password: passwordInput.value
   };
@@ -44,13 +44,13 @@ form.addEventListener('submit', async (e) => {
     } else {
       Swal.fire({
         text: "Your account failed to create or the email is already in use",
-        icon: "success",
+        icon: "error",
       });
     }
   } catch (error) {
     Swal.fire({
       text: "Your account failed to create or the email is already in use",
-      icon: "success",
+      icon: "error",
     });
   } finally {
 

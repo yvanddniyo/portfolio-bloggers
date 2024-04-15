@@ -91,7 +91,7 @@ const ArticleSinglePage = () => {
     if (!token) {
       Swal.fire({
         text: "You failed to comment, please log in",
-        icon: "success",
+        icon: "info",
         footer: '<a href="../../Html/login.html">Please Log in</a>',
       });
     }
@@ -133,7 +133,7 @@ const ArticleSinglePage = () => {
     if (!token) {
       Swal.fire({
         text: "You failed to like, please log in",
-        icon: "success",
+        icon: "info",
         footer: '<a href="../../Html/login.html">Please Log in</a>',
       });
     }
