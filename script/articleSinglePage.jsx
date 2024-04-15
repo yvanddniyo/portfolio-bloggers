@@ -150,10 +150,8 @@ const ArticleSinglePage = () => {
       const data = await response.json();
       getLikesOfSinglePage();
       checkWhoLikeOrNot();
-      console.log(data);
     } catch (err) {
       setLoadingComment(false);
-      console.error("error ocurred in liking :", err);
     }
   };
 
