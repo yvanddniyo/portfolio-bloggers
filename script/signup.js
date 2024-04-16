@@ -37,7 +37,7 @@ form.addEventListener('submit', async (e) => {
 
     if (response.ok) {
       Swal.fire({
-        text: "Your account was successfully created",
+        text: "Your account was successfully created!",
         icon: "success",
         footer: '<a href="../../Html/login.html">Please Log in</a>',
       });
@@ -49,7 +49,7 @@ form.addEventListener('submit', async (e) => {
     }
   } catch (error) {
     Swal.fire({
-      text: "Your account failed to create or the email is already in use",
+      text: "Your account failed to create or the email is already in use.",
       icon: "error",
     });
   } finally {
